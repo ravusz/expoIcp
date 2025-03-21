@@ -10,6 +10,19 @@ const ProjectsScreen = () => {
       >
         Go to /add Projects
       </Link>
+      <Link
+        href="/projects/editProject"
+        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
+      >
+        Go to /edit Projects
+      </Link>
+      <Link
+        href="/projects/tasks"
+        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
+      >
+        Go to Tasks
+      </Link>
+
       <Text>ProjectsScreen11</Text>
     </View>
   );

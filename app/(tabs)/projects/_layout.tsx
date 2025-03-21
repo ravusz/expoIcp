@@ -8,6 +8,14 @@ export default function ProjectsLayout() {
         name="addProject/index"
         options={{ title: "Add project" }}
       />
+      <Stack.Screen
+        name="editProject/index"
+        options={{ title: "Edit project" }}
+      />
+      <Stack.Screen
+        name="tasks"
+        options={{ title: "Tasks", headerShown: false }}
+      />
     </Stack>
   );
 }
