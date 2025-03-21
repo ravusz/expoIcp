@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { translate } from "@/i18n";
 
 export default function ProjectsLayout() {
   return (
@@ -6,15 +7,22 @@ export default function ProjectsLayout() {
       <Stack.Screen name="index" options={{ title: "Projects" }} />
       <Stack.Screen
         name="addProject/index"
-        options={{ title: "Add project" }}
+        options={{
+          title: translate("routing.ADD_PROJECT"),
+        }}
       />
       <Stack.Screen
         name="editProject/index"
-        options={{ title: "Edit project" }}
+        options={{
+          title: translate("routing.EDIT_PROJECT"),
+        }}
       />
       <Stack.Screen
         name="tasks"
-        options={{ title: "Tasks", headerShown: false }}
+        options={{
+          title: translate("routing.TASKS"),
+          headerShown: false,
+        }}
       />
     </Stack>
   );

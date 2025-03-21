@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Text } from "react-native";
+import { translate } from "@/i18n";
 
 export default function TabLayout() {
   return (
@@ -8,7 +9,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: translate("routing.DASHBOARD"),
           tabBarIcon: ({ color }) => <Text>Home</Text>,
         }}
       />
@@ -16,7 +17,7 @@ export default function TabLayout() {
         name="projects"
         options={{
           headerShown: false,
-          title: "Projects",
+          title: translate("routing.PROJECTS"),
           tabBarIcon: ({ color }) => <Text>Projects</Text>,
         }}
       />

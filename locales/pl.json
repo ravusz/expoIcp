@@ -1,0 +1,51 @@
+{
+  "routing": {
+    "DASHBOARD": "Dashboard",
+    "PROJECTS": "Projekty",
+    "ADD_PROJECTS": "Dodaj projekt",
+    "EDIT_PROJECTS": "Edytuj projekt",
+    "TASKS": "Zadania",
+    "ADD_TASKS": "Dodaj zadanie",
+    "EDIT_TASKS": "Edytuj zadanie"
+  },
+  "errorScreen": {
+    "TITLE": "Ups! Coś poszło nie tak.",
+    "DESCRIPTION": "Napotkaliśmy niespodziewany błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie później.",
+    "REFRESH": "Odśwież"
+  },
+  "project": {
+    "deleteConfirmation": {
+      "TITLE": "Usuwanie",
+      "DESCRIPTION": "Czy na pewno chcesz usunąć ten projekt ?",
+      "CANCEL_BUTTON": "Anuluj",
+      "SUBMIT_BUTTON": "Potwierdz"
+    },
+    "SEARCH_PLACEHOLDER": "Wyszukaj project...",
+    "emptyList": {
+      "TITLE": "Brak projektów",
+      "DESCRIPTON": "Nie masz jeszcze żadnych projektów, dodaj pierwszy!"
+    },
+    "addNewProject": "Dodaj nowy projekt",
+    "addProjectSuccessMessage": "Projekt został pomyślnie utworzony!",
+    "addProjectErrorMessage": "Błąd podczas dodawania projektu",
+    "deleteProjectSuccessMessage": "Projekt został usunięty!",
+    "deleteProjectErrorMessage": "Błąd podczas usuwania projektu",
+    "newProjectForm": {
+      "nameField": {
+        "LABEL": "Nazwa projektu",
+        "PLACEHOLDER": "Wprowadz nazwę projektu...",
+        "validation": {
+          "REQUIRED": "Musisz podać nazwę projektu"
+        }
+      },
+      "descriptionField": {
+        "LABEL": "Opis projektu",
+        "PLACEHOLDER": "Wprowadz opis projektu...",
+        "validation": {
+          "REQUIRED": "Musisz podać opis projektu"
+        }
+      },
+      "SUBMIT_BUTTON_LABEL": "Dodaj nowy projekt"
+    }
+  }
+}
