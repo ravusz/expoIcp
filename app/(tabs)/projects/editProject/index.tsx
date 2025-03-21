@@ -1,10 +1,11 @@
-import { View, Text } from "react-native";
+import ProjectForm from "../components/projectForm/ProjectForm";
+import ScreenContainer from "@/components/screenContainer";
 
 const EditProjectsScreen = () => {
   return (
-    <View>
-      <Text>Edit project</Text>
-    </View>
+    <ScreenContainer>
+      <ProjectForm />
+    </ScreenContainer>
   );
 };
 

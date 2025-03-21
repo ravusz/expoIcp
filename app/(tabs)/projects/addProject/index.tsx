@@ -1,4 +1,4 @@
-import ProjectForm from "../components/ProjectForm";
+import ProjectForm from "../components/projectForm/ProjectForm";
 import ScreenContainer from "@/components/screenContainer";
 
 const AddProjectsScreen = () => {
