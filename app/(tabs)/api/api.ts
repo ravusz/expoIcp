@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-native-uuid";
 
 export type NewProject = {
   id: string;
@@ -18,7 +18,7 @@ export const createNewProject = async (data: NewProject) => {
 
   await AsyncStorage.setItem(
     "projects",
-    JSON.stringify([...currentProjects, { ...data, id: uuidv4() }]),
+    JSON.stringify([...currentProjects, { ...data, id: uuid.v4() }]),
   );
 };
 
