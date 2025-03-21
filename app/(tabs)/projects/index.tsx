@@ -5,12 +5,12 @@ const ProjectsScreen = () => {
   return (
     <View>
       <Link
-        href="/addProject"
+        href="/projects/addProject"
         style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
       >
-        Go to /counter
+        Go to /add Projects
       </Link>
-      <Text>ProjectsScreen</Text>
+      <Text>ProjectsScreen11</Text>
     </View>
   );
 };

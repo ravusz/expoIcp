@@ -13,8 +13,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="projects/index"
+        name="projects"
         options={{
+          headerShown: false,
           title: "Projects",
           tabBarIcon: ({ color }) => <Text>Projects</Text>,
         }}
