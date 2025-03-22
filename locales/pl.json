@@ -1,4 +1,10 @@
 {
+  "taskStatuses": {
+    "TO_DO": "Do zrobienia",
+    "IN_REVIEW": "W przeglądzie",
+    "IN_PROGRESS": "W trakcie",
+    "DONE": "Zrobione"
+  },
   "routing": {
     "DASHBOARD": "Dashboard",
     "PROJECTS": "Projekty",
