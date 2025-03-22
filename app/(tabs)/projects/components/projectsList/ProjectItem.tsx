@@ -33,7 +33,7 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
   };
 
   const onEdit = () => {
-    router.navigate(`/projects/${id}`);
+    router.navigate(`/projects/${id}/editProject`);
   };
 
   const rightSwipe = () => {
@@ -57,7 +57,7 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
 
   return (
     <ReanimatedSwipeable renderRightActions={rightSwipe}>
-      <Link href="/projects/tasks" style={styles.itemContainer}>
+      <Link href={`/projects/${id}/tasks`} style={styles.itemContainer}>
         <View style={styles.itemContent}>
           <View>
             <Text style={styles.itemTitle}>{name}</Text>

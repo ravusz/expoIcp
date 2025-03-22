@@ -6,13 +6,13 @@ const TasksScreen = () => {
   return (
     <View>
       <Link
-        href="projects/tasks/addTask"
+        href="projects/[projectId]/tasks/addTask"
         style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
       >
         Go to /add Task
       </Link>
       <Link
-        href="projects/tasks/editTask"
+        href="projects/[projectId]/tasks/editTask"
         style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
       >
         Go to /edit Task

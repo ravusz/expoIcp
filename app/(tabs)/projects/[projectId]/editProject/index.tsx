@@ -1,4 +1,4 @@
-import ProjectForm from "../components/projectForm/ProjectForm";
+import ProjectForm from "../../components/projectForm/ProjectForm";
 import ScreenContainer from "@/components/screenContainer";
 import { useEditProject } from "@/app/(tabs)/projects/api/mutations/useEditProject";
 import { useFetchProjectById } from "@/app/(tabs)/projects/api/queries/useFetchProjectById";
