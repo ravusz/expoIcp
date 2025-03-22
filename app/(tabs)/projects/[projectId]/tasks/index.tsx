@@ -70,7 +70,18 @@ const TasksScreen = () => {
           data: (
             <>
               {data?.map((item) => {
-                return <Text>{item.name}</Text>;
+                return (
+                  <Link
+                    href={`projects/${projectId}/tasks/${item.id}/editTask`}
+                    style={{
+                      textAlign: "center",
+                      marginBottom: 18,
+                      fontSize: 24,
+                    }}
+                  >
+                    go to task {item.name}
+                  </Link>
+                );
               })}
               <AddTaskButton />
             </>

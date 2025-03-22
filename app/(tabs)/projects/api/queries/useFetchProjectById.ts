@@ -3,7 +3,7 @@ import { fetchProjectById } from "../api";
 import type { NewProject } from "../api";
 import { projectKeys } from "../queryKeys";
 
-export const useFetchProjectById = ({ projectId }: { projectId: string }) => {
+export const useFetchProjectById = (projectId: string) => {
   return useQuery<NewProject>({
     queryKey: [projectKeys.byId(projectId)],
     queryFn: () => fetchProjectById({ projectId }),

@@ -8,8 +8,7 @@ export const useDeleteProject = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ projectId }: { projectId: string }) =>
-      deleteProject(projectId),
+    mutationFn: deleteProject,
     onSuccess: async () => {
       Toast.show({
         type: "success",

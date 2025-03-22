@@ -78,3 +78,12 @@ export const editTask = async (
 
   await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
 };
+
+export const fetchTaskById = async (
+  projectId: string,
+  taskId: string,
+): Promise<TaskResponse | undefined> => {
+  const currentTasks = await fetchAllTasks(projectId);
+
+  return currentTasks.find((item: TaskResponse) => item.id === taskId);
+};

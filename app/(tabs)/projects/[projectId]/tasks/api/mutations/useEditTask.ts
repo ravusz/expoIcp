@@ -5,12 +5,19 @@ import { editTask } from "../api";
 import { taskKeys } from "../queryKeys";
 import type { Task } from "../api";
 
-export const useEditTask = (projectId: string) => {
+export const useEditTask = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ taskId, data }: { taskId: string; data: Task }) =>
-      editTask(projectId, taskId, data),
+    mutationFn: ({
+      projectId,
+      taskId,
+      data,
+    }: {
+      projectId: string;
+      taskId: string;
+      data: Task;
+    }) => editTask(projectId, taskId, data),
     onSuccess: async () => {
       Toast.show({
         type: "success",

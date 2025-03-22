@@ -1,9 +1,9 @@
-import ProjectForm from "../components/taskForm";
+import TaskForm from "../../components/taskForm";
 import ScreenContainer from "@/components/screenContainer";
-import { useEditTask } from "../api/mutations/useEditTask";
-import { useFetchProjectById } from "@/app/(tabs)/projects/api/queries/useFetchProjectById";
+import { useEditTask } from "../../api/mutations/useEditTask";
+import { useFetchTaskById } from "../../api/queries/useFetchTaskById";
 import { useLocalSearchParams } from "expo-router";
-import type { Task } from "../api/api";
+import type { Task } from "../../api/api";
 import { useRouter } from "expo-router";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
@@ -12,17 +12,19 @@ import { translate } from "@/i18n";
 
 const EditTaskScreen = () => {
   const router = useRouter();
-  const { projectId }: { projectId: string } = useLocalSearchParams();
+  const { projectId, taskId }: { projectId: string; taskId: string } =
+    useLocalSearchParams();
 
-  const { data, isLoading, isError, refetch } = useFetchProjectById({
+  const { data, isLoading, isError, refetch } = useFetchTaskById(
     projectId,
-  });
+    taskId,
+  );
 
-  const { mutate, isPending } = useEditTask(projectId);
+  const { mutate, isPending } = useEditTask();
 
   const onSubmit = (data: Task) => {
     mutate(
-      { projectId, data },
+      { projectId, taskId, data },
       {
         onSuccess: () => {
           router.back();
@@ -55,7 +57,7 @@ const EditTaskScreen = () => {
             />
           ),
           data: (
-            <ProjectForm
+            <TaskForm
               defaultValues={data}
               isLoading={isPending}
               onSubmit={onSubmit}

@@ -14,9 +14,7 @@ const EditProjectsScreen = () => {
   const router = useRouter();
   const { projectId }: { projectId: string } = useLocalSearchParams();
 
-  const { data, isLoading, isError, refetch } = useFetchProjectById({
-    projectId,
-  });
+  const { data, isLoading, isError, refetch } = useFetchProjectById(projectId);
 
   const { mutate, isPending } = useEditProject();
 

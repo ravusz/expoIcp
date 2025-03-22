@@ -10,14 +10,17 @@ const AddTaskScreen = () => {
   const { projectId }: { projectId: string } = useLocalSearchParams();
   const router = useRouter();
 
-  const { mutate, isPending } = useCreateNewTask(projectId);
+  const { mutate, isPending } = useCreateNewTask();
 
   const onSubmit = (data: Task) => {
-    mutate(data, {
-      onSuccess: () => {
-        router.back();
+    mutate(
+      { projectId, data },
+      {
+        onSuccess: () => {
+          router.back();
+        },
       },
-    });
+    );
   };
 
   return (

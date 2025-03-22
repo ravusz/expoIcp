@@ -25,7 +25,7 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
         },
         {
           text: translate("project.deleteConfirmation.SUBMIT_BUTTON"),
-          onPress: () => mutate({ projectId: id }),
+          onPress: () => mutate(id),
         },
       ],
       { cancelable: true },

@@ -17,7 +17,7 @@ export default function TasksLayout() {
         }}
       />
       <Stack.Screen
-        name="editTask/index"
+        name="[taskId]/editTask/index"
         options={{
           title: translate("routing.EDIT_TASK"),
         }}
