@@ -5,14 +5,14 @@ import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import { TASK_STATUSES } from "../constants";
 
 export type Task = {
-  id: string;
   projectId: string;
   name: string;
   description: string;
+  status: keyof typeof TASK_STATUSES;
 };
 
 export type TaskResponse = Task & {
-  projectId: string;
+  id: string;
 };
 
 export const TASKS_KEY = "tasks";

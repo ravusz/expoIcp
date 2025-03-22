@@ -6,10 +6,11 @@ import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 
 import AddTaskButton from "./components/addTaskButton";
+import { StyleSheet, View, Text } from "react-native";
 
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
-import TaskCard from "./components/taskCard";
+import TaskCard from "./components/TasksCarousel/taskCard";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
@@ -62,12 +63,7 @@ const TasksScreen = () => {
               description="task.emptyList.DESCRIPTION"
             />
           ),
-          data: (
-            <>
-              <TasksCarousel data={data} />
-              <AddTaskButton />
-            </>
-          ),
+          data: <TasksCarousel data={data!} />,
         }[state]
       }
     </ScreenContainer>
