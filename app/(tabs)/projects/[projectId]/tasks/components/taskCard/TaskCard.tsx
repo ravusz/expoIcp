@@ -5,13 +5,13 @@ import type { TaskResponse } from "../../api/api";
 import ActionButton from "@/components/actionButton";
 import { View, Alert } from "react-native";
 import { translate } from "@/i18n";
+import { useRouter } from "expo-router";
 
-type Props = TaskResponse & {
-  id: string;
-};
+type Props = TaskResponse;
 
 const TaskCard = ({ id, projectId, name }: Props) => {
   const { isPending, mutate } = useDeleteTask();
+  const router = useRouter();
 
   const onDelete = () => {
     Alert.alert(
@@ -29,6 +29,10 @@ const TaskCard = ({ id, projectId, name }: Props) => {
       ],
       { cancelable: true },
     );
+  };
+
+  const onEdit = () => {
+    router.navigate(`projects/${projectId}/tasks/${id}/editTask`);
   };
 
   return (
@@ -50,6 +54,7 @@ const TaskCard = ({ id, projectId, name }: Props) => {
         name="delete-outline"
         isLoading={isPending}
       ></ActionButton>
+      <ActionButton onPress={onEdit} variant="success" name="pencil-outline" />
     </View>
   );
 };
