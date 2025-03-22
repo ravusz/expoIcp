@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import { Link } from "expo-router";
+import AddTaskButton from "./components/addTaskButton";
 
 const TasksScreen = () => {
   return (
@@ -17,6 +18,7 @@ const TasksScreen = () => {
         Go to /edit Task
       </Link>
       <Text>TasksScreen</Text>
+      <AddTaskButton />
     </View>
   );
 };

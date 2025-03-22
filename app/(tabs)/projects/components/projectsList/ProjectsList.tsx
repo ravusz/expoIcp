@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList } from "react-native";
-import type { NewProject } from "@/app/(tabs)/api/api";
+import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import ProjectItem from "./ProjectItem";
 
 type Props = {

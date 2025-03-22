@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 
 import React, { useState } from "react";
-import { useFetchAllProjects } from "@/app/(tabs)/api/queries/useFetchAllProjects";
+import { useFetchAllProjects } from "@/app/(tabs)/projects/api/queries/useFetchAllProjects";
 import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 import ProjectList from "./components/projectsList";
@@ -9,6 +9,7 @@ import ProjectSearchInput from "./components/projectSearchInput";
 import AddProjectButton from "./components/addProjectButton";
 
 import ScreenContainer from "@/components/screenContainer";
+import ScreenLoader from "@/components/screenLoader";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
@@ -40,7 +41,7 @@ const ProjectsScreen = () => {
     <ScreenContainer>
       {
         {
-          loading: <Text>loading</Text>,
+          loading: <ScreenLoader />,
           error: (
             <ErrorScreen
               button={

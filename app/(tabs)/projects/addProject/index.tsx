@@ -1,7 +1,7 @@
 import ProjectForm from "../components/projectForm/ProjectForm";
 import ScreenContainer from "@/components/screenContainer";
-import { useCreateNewProject } from "@/app/(tabs)/api/mutations/useCreateNewProject";
-import type { NewProject } from "@/app/(tabs)/api/api";
+import { useCreateNewProject } from "@/app/(tabs)/projects/api/mutations/useCreateNewProject";
+import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import { useRouter } from "expo-router";
 import { translate } from "@/i18n";
 

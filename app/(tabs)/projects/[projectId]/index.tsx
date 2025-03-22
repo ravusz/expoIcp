@@ -1,9 +1,9 @@
 import ProjectForm from "../components/projectForm/ProjectForm";
 import ScreenContainer from "@/components/screenContainer";
-import { useEditProject } from "@/app/(tabs)/api/mutations/useEditProject";
-import { useFetchProjectById } from "@/app/(tabs)/api/queries/useFetchProjectById";
+import { useEditProject } from "@/app/(tabs)/projects/api/mutations/useEditProject";
+import { useFetchProjectById } from "@/app/(tabs)/projects/api/queries/useFetchProjectById";
 import { useLocalSearchParams } from "expo-router";
-import type { NewProject } from "@/app/(tabs)/api/api";
+import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import { useRouter } from "expo-router";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";

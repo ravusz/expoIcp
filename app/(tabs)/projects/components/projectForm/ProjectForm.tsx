@@ -2,7 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import InputField from "@/components/form/inputField";
 import { translate } from "@/i18n";
-import type { NewProject } from "@/app/(tabs)/api/api";
+import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import Button from "@/components/button";
 
 const I18N_TRANSLATION_PATH = "project.projectForm";

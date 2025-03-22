@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
-import type { NewProject } from "@/app/(tabs)/api/api";
+import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import { theme } from "@/theme";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { translate } from "@/i18n";
-import { useDeleteProject } from "@/app/(tabs)/api/mutations/useDeleteProject";
+import { useDeleteProject } from "@/app/(tabs)/projects/api/mutations/useDeleteProject";
 import { Link } from "expo-router";
 import ActionButton from "@/components/actionButton";
 import { useRouter } from "expo-router";
