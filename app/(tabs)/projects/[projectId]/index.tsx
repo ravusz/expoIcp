@@ -59,6 +59,9 @@ const EditProjectsScreen = () => {
               defaultValues={data}
               isLoading={isPending}
               onSubmit={onSubmit}
+              submitText={translate(
+                `project.projectForm.EDIT_SUBMIT_BUTTON_LABEL`,
+              )}
             />
           ),
         }[state]

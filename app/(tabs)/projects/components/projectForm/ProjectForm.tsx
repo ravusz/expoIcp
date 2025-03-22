@@ -5,17 +5,19 @@ import { translate } from "@/i18n";
 import type { NewProject } from "@/app/(tabs)/api/api";
 import Button from "@/components/button";
 
-const I18N_TRANSLATION_PATH = "project.newProjectForm";
+const I18N_TRANSLATION_PATH = "project.projectForm";
 
 type Props = {
   defaultValues?: NewProject;
   onSubmit: (values: NewProject) => void;
   isLoading?: boolean;
+  submitText: string;
 };
 
 const ProjectForm = ({
   defaultValues = undefined,
   isLoading,
+  submitText,
   onSubmit,
 }: Props) => {
   const {
@@ -77,7 +79,7 @@ const ProjectForm = ({
         onPress={handleSubmit(onSubmit)}
         disabled={isLoading || Object.keys(errors).length > 0}
       >
-        {translate(`${I18N_TRANSLATION_PATH}.SUBMIT_BUTTON_LABEL`)}
+        {submitText}
       </Button>
     </>
   );

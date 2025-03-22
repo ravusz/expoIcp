@@ -32,7 +32,7 @@
     "deleteProjectErrorMessage": "Błąd podczas usuwania projektu",
     "editProjectSuccessMessage": "Projekt został pomyślnie edytowany!",
     "editProjectErrorMessage": "Błąd podczas edytowania projektu",
-    "newProjectForm": {
+    "projectForm": {
       "nameField": {
         "LABEL": "Nazwa projektu",
         "PLACEHOLDER": "Wprowadz nazwę projektu...",
@@ -47,7 +47,8 @@
           "REQUIRED": "Musisz podać opis projektu"
         }
       },
-      "SUBMIT_BUTTON_LABEL": "Dodaj nowy projekt"
+      "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowy projekt",
+      "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj projekt"
     }
   }
 }
