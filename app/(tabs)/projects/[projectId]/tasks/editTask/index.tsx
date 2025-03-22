@@ -1,9 +1,9 @@
 import ProjectForm from "../components/taskForm";
 import ScreenContainer from "@/components/screenContainer";
-import { useEditProject } from "@/app/(tabs)/projects/api/mutations/useEditProject";
+import { useEditTask } from "../api/mutations/useEditTask";
 import { useFetchProjectById } from "@/app/(tabs)/projects/api/queries/useFetchProjectById";
 import { useLocalSearchParams } from "expo-router";
-import type { NewProject } from "@/app/(tabs)/projects/api/api";
+import type { Task } from "../api/api";
 import { useRouter } from "expo-router";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
@@ -18,9 +18,9 @@ const EditTaskScreen = () => {
     projectId,
   });
 
-  const { mutate, isPending } = useEditProject();
+  const { mutate, isPending } = useEditTask(projectId);
 
-  const onSubmit = (data: NewProject) => {
+  const onSubmit = (data: Task) => {
     mutate(
       { projectId, data },
       {

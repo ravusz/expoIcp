@@ -59,3 +59,22 @@ export const createNewTask = async (projectId: string, data: Task) => {
     JSON.stringify([...currentTasks, newTask]),
   );
 };
+
+export const editTask = async (
+  projectId: string,
+  taskId: string,
+  data: Task,
+) => {
+  const currentTasks = await fetchAllTasks(projectId);
+
+  const updatedTasks = currentTasks.map((task: TaskResponse) =>
+    task.id === taskId
+      ? {
+        ...task,
+        ...data,
+      }
+      : task,
+  );
+
+  await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
+};
