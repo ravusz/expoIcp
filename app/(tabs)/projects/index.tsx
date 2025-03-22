@@ -1,5 +1,4 @@
 import { Text } from "react-native";
-import { Link } from "expo-router";
 
 import React, { useState } from "react";
 import { useFetchAllProjects } from "@/app/(tabs)/api/queries/useFetchAllProjects";

@@ -2,11 +2,11 @@
   "routing": {
     "DASHBOARD": "Dashboard",
     "PROJECTS": "Projekty",
-    "ADD_PROJECTS": "Dodaj projekt",
-    "EDIT_PROJECTS": "Edytuj projekt",
+    "ADD_PROJECT": "Dodaj projekt",
+    "EDIT_PROJECT": "Edytuj projekt",
     "TASKS": "Zadania",
-    "ADD_TASKS": "Dodaj zadanie",
-    "EDIT_TASKS": "Edytuj zadanie"
+    "ADD_TASK": "Dodaj zadanie",
+    "EDIT_TASK": "Edytuj zadanie"
   },
   "errorScreen": {
     "TITLE": "Ups! Coś poszło nie tak.",
