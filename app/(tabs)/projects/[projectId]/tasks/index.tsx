@@ -1,25 +1,77 @@
-import { View, Text } from "react-native";
 import { Link } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
+
+import React from "react";
+import { useFetchAllTasks } from "./api/queries/useFetchAllTasks";
+import ErrorScreen from "@/components/errorScreen";
+import EmptyList from "@/components/list/emptyList";
+
 import AddTaskButton from "./components/addTaskButton";
+import { Text } from "react-native";
+
+import ScreenContainer from "@/components/screenContainer";
+import ScreenLoader from "@/components/screenLoader";
+
+import Button from "@/components/button";
+import { translate } from "@/i18n";
 
 const TasksScreen = () => {
+  const { projectId }: { projectId: string } = useLocalSearchParams();
+
+  const { data, isError, isLoading, refetch } = useFetchAllTasks(projectId);
+
+  const getState = () => {
+    if (isLoading) return "loading";
+    if (isError) return "error";
+    if (data?.length === 0) return "empty";
+
+    return "data";
+  };
+
+  const state = getState();
+
   return (
-    <View>
-      <Link
-        href="projects/[projectId]/tasks/addTask"
-        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
-      >
-        Go to /add Task
-      </Link>
+    <ScreenContainer>
       <Link
         href="projects/[projectId]/tasks/editTask"
         style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
       >
         Go to /edit Task
       </Link>
-      <Text>TasksScreen</Text>
-      <AddTaskButton />
-    </View>
+      {
+        {
+          loading: <ScreenLoader />,
+          error: (
+            <ErrorScreen
+              button={
+                <Button onPress={() => refetch()}>
+                  {translate("errorScreen.REFRESH")}
+                </Button>
+              }
+            />
+          ),
+          empty: (
+            <EmptyList
+              button={
+                <Button onPress={() => {}}>
+                  {translate("task.addNewTask")}
+                </Button>
+              }
+              title="task.emptyList.TITLE"
+              description="task.emptyList.DESCRIPTION"
+            />
+          ),
+          data: (
+            <>
+              {data?.map((item) => {
+                return <Text>{item.name}</Text>;
+              })}
+              <AddTaskButton />
+            </>
+          ),
+        }[state]
+      }
+    </ScreenContainer>
   );
 };
 

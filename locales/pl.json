@@ -50,5 +50,43 @@
       "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowy projekt",
       "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj projekt"
     }
+  },
+  "task": {
+    "deleteConfirmation": {
+      "TITLE": "Usuwanie",
+      "DESCRIPTION": "Czy na pewno chcesz usunąć to zadanie?",
+      "CANCEL_BUTTON": "Anuluj",
+      "SUBMIT_BUTTON": "Potwierdź"
+    },
+    "SEARCH_PLACEHOLDER": "Wyszukaj zadanie...",
+    "emptyList": {
+      "TITLE": "Brak zadań",
+      "DESCRIPTION": "Nie masz jeszcze żadnych zadań, dodaj pierwsze!"
+    },
+    "addNewTask": "Dodaj nowe zadanie",
+    "addTaskSuccessMessage": "Zadanie zostało pomyślnie utworzone!",
+    "addTaskErrorMessage": "Błąd podczas dodawania zadania",
+    "deleteTaskSuccessMessage": "Zadanie zostało usunięte!",
+    "deleteTaskErrorMessage": "Błąd podczas usuwania zadania",
+    "editTaskSuccessMessage": "Zadanie zostało pomyślnie edytowane!",
+    "editTaskErrorMessage": "Błąd podczas edytowania zadania",
+    "taskForm": {
+      "nameField": {
+        "LABEL": "Nazwa zadania",
+        "PLACEHOLDER": "Wprowadź nazwę zadania...",
+        "validation": {
+          "REQUIRED": "Musisz podać nazwę zadania"
+        }
+      },
+      "descriptionField": {
+        "LABEL": "Opis zadania",
+        "PLACEHOLDER": "Wprowadź opis zadania...",
+        "validation": {
+          "REQUIRED": "Musisz podać opis zadania"
+        }
+      },
+      "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowe zadanie",
+      "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj zadanie"
+    }
   }
 }
