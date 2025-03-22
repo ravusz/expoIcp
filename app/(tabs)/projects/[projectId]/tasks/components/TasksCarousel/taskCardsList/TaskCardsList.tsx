@@ -16,7 +16,13 @@ type Props = {
 
 const TaskCardsList = ({ data, status }: Props) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const [items, setItems] = useState(data);
+  const [items, setItems] = useState<TaskResponse[]>(data);
+  const [selectedTask, setTask] = useState<TaskResponse>(data[0]);
+
+  const onSelectTask = (task: TaskResponse) => {
+    setTask(task);
+    bottomSheetRef.current?.expand();
+  };
 
   return (
     <View style={styles.page}>
@@ -32,15 +38,18 @@ const TaskCardsList = ({ data, status }: Props) => {
             task={item}
             drag={drag}
             isActive={isActive}
-            onPress={() => bottomSheetRef.current?.expand()}
+            onPress={() => onSelectTask(item)}
           />
         )}
       />
-      <ActionsBottomSheet
-        ref={bottomSheetRef}
-        onDelete={() => {}}
-        onEdit={() => {}}
-      />
+      {selectedTask && (
+        <ActionsBottomSheet
+          ref={bottomSheetRef}
+          projectId={selectedTask.projectId}
+          taskId={selectedTask.id}
+        />
+      )}
+
       {status === TASK_STATUSES.TO_DO && <AddTaskButton />}
     </View>
   );

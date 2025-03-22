@@ -3,25 +3,49 @@ import { useCallback, forwardRef } from "react";
 import React from "react";
 import { StyleSheet } from "react-native";
 import ActionButton from "@/components/actionButton";
+import { useDeleteTask } from "../../../../api/mutations/useDeleteTask";
+import { useRouter } from "expo-router";
+import { Alert } from "react-native";
+import { translate } from "@/i18n";
 
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 type Props = {
-  onEdit: () => void;
-  onDelete: () => void;
+  projectId: string;
+  taskId: string;
 };
 
 const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
-  ({ onEdit, onDelete }: Props, ref) => {
-    const handleSheetChanges = useCallback((index: number) => {
-      console.log("handleSheetChanges", index);
-    }, []);
+  ({ projectId, taskId }: Props, ref) => {
+    const { isPending, mutate } = useDeleteTask();
+    const router = useRouter();
+
+    const onDelete = () => {
+      Alert.alert(
+        translate("task.deleteConfirmation.TITLE"),
+        translate("task.deleteConfirmation.DESCRIPTION"),
+        [
+          {
+            text: translate("task.deleteConfirmation.CANCEL_BUTTON"),
+            style: "cancel",
+          },
+          {
+            text: translate("task.deleteConfirmation.SUBMIT_BUTTON"),
+            onPress: () => mutate({ projectId, taskId }),
+          },
+        ],
+        { cancelable: true },
+      );
+    };
+
+    const onEdit = () => {
+      router.navigate(`projects/${projectId}/tasks/${taskId}/editTask`);
+    };
 
     return (
       <BottomSheet
         ref={ref}
         index={-1}
-        onChange={handleSheetChanges}
         snapPoints={["13%"]}
         enablePanDownToClose
       >
@@ -35,7 +59,7 @@ const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
             onPress={onDelete}
             variant="error"
             name="delete-outline"
-            isLoading
+            isLoading={isPending}
           />
         </BottomSheetView>
       </BottomSheet>
