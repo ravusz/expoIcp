@@ -1,6 +1,6 @@
 import React from "react";
-import { useDeleteTask } from "../../../api/mutations/useDeleteTask";
-import type { TaskResponse } from "../../../api/api";
+import { useDeleteTask } from "../../../../api/mutations/useDeleteTask";
+import type { TaskResponse } from "../../../../api/api";
 import ActionButton from "@/components/actionButton";
 import { TouchableOpacity, Alert, StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
@@ -10,9 +10,10 @@ type Props = {
   task: TaskResponse;
   drag: any;
   isActive: any;
+  onPress: () => void;
 };
 
-const TaskCard = ({ task, drag, isActive }: Props) => {
+const TaskCard = ({ task, drag, isActive, onPress }: Props) => {
   const { isPending, mutate } = useDeleteTask();
   const router = useRouter();
 
@@ -41,6 +42,7 @@ const TaskCard = ({ task, drag, isActive }: Props) => {
   return (
     <TouchableOpacity
       onLongPress={drag}
+      onPress={onPress}
       disabled={isActive}
       style={[styles.taskCard, isActive && styles.activeTaskCard]}
     >
@@ -55,20 +57,6 @@ const TaskCard = ({ task, drag, isActive }: Props) => {
         >
           {task.description}
         </Text>
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <ActionButton
-          onPress={onEdit}
-          variant="success"
-          name="pencil-outline"
-        />
-        <ActionButton
-          onPress={onDelete}
-          variant="error"
-          name="delete-outline"
-          isLoading={isPending}
-        />
       </View>
     </TouchableOpacity>
   );
@@ -105,10 +93,5 @@ const styles = StyleSheet.create({
   taskDescription: {
     fontSize: 14,
     color: "#666",
-  },
-  buttonContainer: {
-    flexDirection: "column", // Ustawienie przycisków jeden pod drugim
-    alignItems: "center",
-    gap: 8, // Odstęp między przyciskami
   },
 });

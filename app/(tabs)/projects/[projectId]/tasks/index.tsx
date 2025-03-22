@@ -10,7 +10,7 @@ import { StyleSheet, View, Text } from "react-native";
 
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
-import TaskCard from "./components/TasksCarousel/taskCard";
+import TaskCard from "./components/TasksCarousel/taskCardsList/taskCard";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
