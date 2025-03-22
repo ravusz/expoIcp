@@ -1,5 +1,4 @@
-import { Link } from "expo-router";
-import { useLocalSearchParams } from "expo-router";
+import { Link, useRouter, useLocalSearchParams } from "expo-router";
 
 import React from "react";
 import { useFetchAllTasks } from "./api/queries/useFetchAllTasks";
@@ -17,8 +16,11 @@ import { translate } from "@/i18n";
 
 const TasksScreen = () => {
   const { projectId }: { projectId: string } = useLocalSearchParams();
+  const router = useRouter();
 
   const { data, isError, isLoading, refetch } = useFetchAllTasks(projectId);
+
+  console.log("TasksScreen", data);
 
   const getState = () => {
     if (isLoading) return "loading";
@@ -53,7 +55,11 @@ const TasksScreen = () => {
           empty: (
             <EmptyList
               button={
-                <Button onPress={() => {}}>
+                <Button
+                  onPress={() =>
+                    router.navigate(`projects/${projectId}/tasks/addTask`)
+                  }
+                >
                   {translate("task.addNewTask")}
                 </Button>
               }

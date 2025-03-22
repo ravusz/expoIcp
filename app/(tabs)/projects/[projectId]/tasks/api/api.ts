@@ -23,7 +23,7 @@ export const fetchAllTasks = async (
   const storedTasks = await AsyncStorage.getItem(TASKS_KEY);
   const allTasks = storedTasks ? JSON.parse(storedTasks) : [];
 
-  return allTasks.filter(({ id }: NewProject) => projectId === id);
+  return allTasks.filter((task: TaskResponse) => projectId === task.projectId);
 };
 
 export const createNewTask = async (projectId: string, data: Task) => {
