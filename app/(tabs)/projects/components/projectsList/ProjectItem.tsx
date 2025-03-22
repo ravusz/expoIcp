@@ -33,7 +33,7 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
   };
 
   const onEdit = () => {
-    router.navigate("/projects/editProject");
+    router.navigate(`/projects/${id}`);
   };
 
   const rightSwipe = () => {

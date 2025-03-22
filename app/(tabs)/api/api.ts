@@ -13,6 +13,17 @@ export const fetchAllProjects = async () => {
   return storedProjects ? JSON.parse(storedProjects) : [];
 };
 
+export const fetchProjectById = async ({
+  projectId,
+}: {
+  projectId: string;
+}) => {
+  const storedProjects = await AsyncStorage.getItem("projects");
+  const projects = storedProjects ? JSON.parse(storedProjects) : [];
+
+  return projects.find((item: NewProject) => item.id === projectId);
+};
+
 export const createNewProject = async (data: NewProject) => {
   const currentProjects = await fetchAllProjects();
 

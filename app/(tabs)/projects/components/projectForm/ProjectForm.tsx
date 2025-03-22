@@ -2,30 +2,27 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import InputField from "@/components/form/inputField";
 import { translate } from "@/i18n";
-import { useCreateNewProject } from "@/app/(tabs)/api/mutations/useCreateNewProject";
 import type { NewProject } from "@/app/(tabs)/api/api";
-import { useRouter } from "expo-router";
 import Button from "@/components/button";
 
 const I18N_TRANSLATION_PATH = "project.newProjectForm";
 
-const ProjectForm = () => {
-  const router = useRouter();
-  const { mutate, isPending } = useCreateNewProject();
+type Props = {
+  defaultValues?: NewProject;
+  onSubmit: (values: NewProject) => void;
+  isLoading?: boolean;
+};
 
+const ProjectForm = ({
+  defaultValues = undefined,
+  isLoading,
+  onSubmit,
+}: Props) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<NewProject>();
-
-  const onSubmit = (data: NewProject) => {
-    mutate(data, {
-      onSuccess: () => {
-        router.back();
-      },
-    });
-  };
+  } = useForm<NewProject>({ defaultValues });
 
   return (
     <>
@@ -78,7 +75,7 @@ const ProjectForm = () => {
       />
       <Button
         onPress={handleSubmit(onSubmit)}
-        disabled={isPending || Object.keys(errors).length > 0}
+        disabled={isLoading || Object.keys(errors).length > 0}
       >
         {translate(`${I18N_TRANSLATION_PATH}.SUBMIT_BUTTON_LABEL`)}
       </Button>

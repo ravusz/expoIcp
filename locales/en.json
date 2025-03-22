@@ -2,11 +2,11 @@
   "routing": {
     "DASHBOARD": "Dashboard",
     "PROJECTS": "Projekty",
-    "ADD_PROJECT": "Dodaj projekt",
-    "EDIT_PROJECT": "Edytuj projekt",
+    "ADD_PROJECTS": "Dodaj projekt",
+    "EDIT_PROJECTS": "Edytuj projekt",
     "TASKS": "Zadania",
-    "ADD_TASK": "Dodaj zadanie",
-    "EDIT_TASK": "Edytuj zadanie"
+    "ADD_TASKS": "Dodaj zadanie",
+    "EDIT_TASKS": "Edytuj zadanie"
   },
   "errorScreen": {
     "TITLE": "Ups! Coś poszło nie tak.",
@@ -30,6 +30,8 @@
     "addProjectErrorMessage": "Błąd podczas dodawania projektu",
     "deleteProjectSuccessMessage": "Projekt został usunięty!",
     "deleteProjectErrorMessage": "Błąd podczas usuwania projektu",
+    "editProjectSuccessMessage": "Projekt został pomyślnie edytowany!",
+    "editProjectErrorMessage": "Błąd podczas edytowania projektu",
     "newProjectForm": {
       "nameField": {
         "LABEL": "Nazwa projektu",

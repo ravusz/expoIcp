@@ -12,7 +12,7 @@ export default function ProjectsLayout() {
         }}
       />
       <Stack.Screen
-        name="editProject/index"
+        name="[projectId]/index"
         options={{
           title: translate("routing.EDIT_PROJECT"),
         }}
