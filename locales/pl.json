@@ -30,6 +30,8 @@
     "addProjectErrorMessage": "Błąd podczas dodawania projektu",
     "deleteProjectSuccessMessage": "Projekt został usunięty!",
     "deleteProjectErrorMessage": "Błąd podczas usuwania projektu",
+    "editProjectSuccessMessage": "Projekt został pomyślnie edytowany!",
+    "editProjectErrorMessage": "Błąd podczas edytowania projektu",
     "newProjectForm": {
       "nameField": {
         "LABEL": "Nazwa projektu",

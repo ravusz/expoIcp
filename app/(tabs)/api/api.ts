@@ -31,3 +31,18 @@ export const deleteProject = async (projectId: string) => {
 
   await AsyncStorage.setItem("projects", JSON.stringify(updatedProjects));
 };
+
+export const editProject = async (projectId: string, data: NewProject) => {
+  const currentProjects = await fetchAllProjects();
+
+  const updatedProjects = currentProjects.map((project: NewProject) =>
+    project.id === projectId
+      ? {
+        ...project,
+        ...data,
+      }
+      : project,
+  );
+
+  await AsyncStorage.setItem("projects", JSON.stringify(updatedProjects));
+};

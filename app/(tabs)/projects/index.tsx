@@ -11,8 +11,6 @@ import AddProjectButton from "./components/addProjectButton";
 
 import ScreenContainer from "@/components/screenContainer";
 
-import { useRouter } from "expo-router";
-
 import Button from "@/components/button";
 import { translate } from "@/i18n";
 
@@ -29,8 +27,6 @@ const ProjectsScreen = () => {
       )
       : data) || [];
 
-  const router = useRouter();
-
   const getState = () => {
     if (isLoading) return "loading";
     if (isError) return "error";
@@ -43,19 +39,6 @@ const ProjectsScreen = () => {
 
   return (
     <ScreenContainer>
-      <Link
-        href="/projects/editProject"
-        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
-      >
-        Go to /edit Projects
-      </Link>
-      <Link
-        href="/projects/tasks"
-        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
-      >
-        Go to Tasks
-      </Link>
-
       {
         {
           loading: <Text>loading</Text>,

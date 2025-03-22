@@ -1,18 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet, Alert, Pressable } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import type { NewProject } from "@/app/(tabs)/api/api";
 import { theme } from "@/theme";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { translate } from "@/i18n";
 import { useDeleteProject } from "@/app/(tabs)/api/mutations/useDeleteProject";
+import { Link } from "expo-router";
+import ActionButton from "@/components/actionButton";
 import { useRouter } from "expo-router";
 
 const ProjectItem = ({ id, name, description }: NewProject) => {
   const { mutate, isPending } = useDeleteProject();
   const router = useRouter();
 
-  const onSwipe = () => {
+  const onDelete = () => {
     Alert.alert(
       translate("project.deleteConfirmation.TITLE"),
       translate("project.deleteConfirmation.DESCRIPTION"),
@@ -30,35 +32,44 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
     );
   };
 
+  const onEdit = () => {
+    router.navigate("/projects/editProject");
+  };
+
   const rightSwipe = () => {
     return (
-      <View style={styles.deleteButton}>
-        <MaterialCommunityIcons name="delete-outline" size={24} />
+      <View style={styles.swipeContainer}>
+        <ActionButton
+          onPress={onEdit}
+          variant="success"
+          name="pencil-outline"
+        />
+
+        <ActionButton
+          onPress={onDelete}
+          variant="error"
+          name="delete-outline"
+          isLoading={isPending}
+        />
       </View>
     );
   };
 
-  const handleClick = () => {
-    router.push(`/project/tasks`);
-  };
-
   return (
-    <ReanimatedSwipeable
-      renderRightActions={rightSwipe}
-      onSwipeableOpen={onSwipe}
-    >
-      <Pressable
-        onPress={handleClick}
-        style={[
-          styles.itemContainer,
-          {
-            opacity: isPending ? 0.5 : 1,
-          },
-        ]}
-      >
-        <Text style={styles.itemTitle}>{name}</Text>
-        <Text style={styles.itemDescription}>{description}</Text>
-      </Pressable>
+    <ReanimatedSwipeable renderRightActions={rightSwipe}>
+      <Link href="/projects/tasks" style={styles.itemContainer}>
+        <View style={styles.itemContent}>
+          <View>
+            <Text style={styles.itemTitle}>{name}</Text>
+            <Text style={styles.itemDescription}>{description}</Text>
+          </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={24}
+            color={theme.colors.coolGray}
+          />
+        </View>
+      </Link>
     </ReanimatedSwipeable>
   );
 };
@@ -66,14 +77,8 @@ const ProjectItem = ({ id, name, description }: NewProject) => {
 export default ProjectItem;
 
 const styles = StyleSheet.create({
-  deleteButton: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: 75,
-    borderRadius: 10,
-  },
   itemContainer: {
+    flex: 1,
     backgroundColor: "#f8f9fa",
     padding: 16,
     marginVertical: 8,
@@ -85,6 +90,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  itemContent: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   itemTitle: {
     fontSize: 18,
     fontWeight: "bold",
@@ -94,5 +105,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: theme.colors.coolGray,
     marginTop: 4,
+  },
+  swipeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingRight: 16,
   },
 });
