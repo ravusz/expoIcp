@@ -13,6 +13,7 @@ import TaskCard from "./components/taskCard";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
+import TasksCarousel from "./components/TasksCarousel";
 
 const TasksScreen = () => {
   const { projectId }: { projectId: string } = useLocalSearchParams();
@@ -34,12 +35,6 @@ const TasksScreen = () => {
 
   return (
     <ScreenContainer>
-      <Link
-        href="projects/[projectId]/tasks/editTask"
-        style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
-      >
-        Go to /edit Task
-      </Link>
       {
         {
           loading: <ScreenLoader />,
@@ -69,9 +64,7 @@ const TasksScreen = () => {
           ),
           data: (
             <>
-              {data?.map((item) => {
-                return <TaskCard key={item.id} {...item} />;
-              })}
+              <TasksCarousel data={data} />
               <AddTaskButton />
             </>
           ),
