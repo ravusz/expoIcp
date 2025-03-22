@@ -87,3 +87,13 @@ export const fetchTaskById = async (
 
   return currentTasks.find((item: TaskResponse) => item.id === taskId);
 };
+
+export const deleteTask = async (projectId: string, taskId: string) => {
+  const currentTasks = await fetchAllTasks(projectId);
+
+  const updatedTasks = currentTasks.filter(
+    (task: TaskResponse) => task.id !== taskId,
+  );
+
+  await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
+};

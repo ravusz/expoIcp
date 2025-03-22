@@ -6,10 +6,10 @@ import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 
 import AddTaskButton from "./components/addTaskButton";
-import { Text } from "react-native";
 
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
+import TaskCard from "./components/taskCard";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
@@ -70,18 +70,7 @@ const TasksScreen = () => {
           data: (
             <>
               {data?.map((item) => {
-                return (
-                  <Link
-                    href={`projects/${projectId}/tasks/${item.id}/editTask`}
-                    style={{
-                      textAlign: "center",
-                      marginBottom: 18,
-                      fontSize: 24,
-                    }}
-                  >
-                    go to task {item.name}
-                  </Link>
-                );
+                return <TaskCard key={item.id} {...item} />;
               })}
               <AddTaskButton />
             </>

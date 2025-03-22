@@ -10,7 +10,7 @@ import { Link } from "expo-router";
 import ActionButton from "@/components/actionButton";
 import { useRouter } from "expo-router";
 
-const ProjectItem = ({ id, name, description }: NewProject) => {
+const ProjectItem = ({ id, name, description }: Omit<NewProject, "tasks">) => {
   const { mutate, isPending } = useDeleteProject();
   const router = useRouter();
 
