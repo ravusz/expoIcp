@@ -4,11 +4,13 @@ import { PROJECTS_KEY } from "@/app/(tabs)/projects/api/api";
 import type { NewProject } from "@/app/(tabs)/projects/api/api";
 import { TASK_STATUSES } from "../constants";
 
+export type TaskStatus = keyof typeof TASK_STATUSES;
+
 export type Task = {
   projectId: string;
   name: string;
   description: string;
-  status: keyof typeof TASK_STATUSES;
+  status: TaskStatus;
 };
 
 export type TaskResponse = Task & {
@@ -17,7 +19,14 @@ export type TaskResponse = Task & {
 
 export const TASKS_KEY = "tasks";
 
-export const fetchAllTasks = async (
+export const fetchAllTasks = async (): Promise<TaskResponse[]> => {
+  const storedTasks = await AsyncStorage.getItem(TASKS_KEY);
+  const allTasks = storedTasks ? JSON.parse(storedTasks) : [];
+
+  return allTasks;
+};
+
+export const fetchAllProjectTasks = async (
   projectId: string,
 ): Promise<TaskResponse[]> => {
   const storedTasks = await AsyncStorage.getItem(TASKS_KEY);
@@ -27,7 +36,7 @@ export const fetchAllTasks = async (
 };
 
 export const createNewTask = async (projectId: string, data: Task) => {
-  const currentTasks = await fetchAllTasks(projectId);
+  const currentTasks = await fetchAllTasks();
 
   const storedProjects = await AsyncStorage.getItem(PROJECTS_KEY);
 
@@ -65,7 +74,7 @@ export const editTask = async (
   taskId: string,
   data: Task,
 ) => {
-  const currentTasks = await fetchAllTasks(projectId);
+  const currentTasks = await fetchAllTasks();
 
   const updatedTasks = currentTasks.map((task: TaskResponse) =>
     task.id === taskId
@@ -83,16 +92,30 @@ export const fetchTaskById = async (
   projectId: string,
   taskId: string,
 ): Promise<TaskResponse | undefined> => {
-  const currentTasks = await fetchAllTasks(projectId);
+  const currentTasks = await fetchAllTasks();
 
   return currentTasks.find((item: TaskResponse) => item.id === taskId);
 };
 
 export const deleteTask = async (projectId: string, taskId: string) => {
-  const currentTasks = await fetchAllTasks(projectId);
+  const currentTasks = await fetchAllTasks();
 
   const updatedTasks = currentTasks.filter(
     (task: TaskResponse) => task.id !== taskId,
+  );
+
+  await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
+};
+
+export const updateTaskStatus = async (
+  taskId: string,
+  projectId: string,
+  status: TaskStatus,
+) => {
+  const currentTasks = await fetchAllTasks();
+
+  const updatedTasks = currentTasks.map((task: TaskResponse) =>
+    task.id !== taskId ? { ...task, status } : task,
   );
 
   await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));

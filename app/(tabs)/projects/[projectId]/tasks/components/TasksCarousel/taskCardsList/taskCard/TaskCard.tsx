@@ -1,10 +1,6 @@
 import React from "react";
-import { useDeleteTask } from "../../../../api/mutations/useDeleteTask";
 import type { TaskResponse } from "../../../../api/api";
-import ActionButton from "@/components/actionButton";
-import { TouchableOpacity, Alert, StyleSheet, Text, View } from "react-native";
-import { translate } from "@/i18n";
-import { useRouter } from "expo-router";
+import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 
 type Props = {
   task: TaskResponse;
@@ -14,31 +10,6 @@ type Props = {
 };
 
 const TaskCard = ({ task, drag, isActive, onPress }: Props) => {
-  const { isPending, mutate } = useDeleteTask();
-  const router = useRouter();
-
-  const onDelete = () => {
-    Alert.alert(
-      translate("task.deleteConfirmation.TITLE"),
-      translate("task.deleteConfirmation.DESCRIPTION"),
-      [
-        {
-          text: translate("task.deleteConfirmation.CANCEL_BUTTON"),
-          style: "cancel",
-        },
-        {
-          text: translate("task.deleteConfirmation.SUBMIT_BUTTON"),
-          onPress: () => mutate({ projectId: task.projectId, taskId: task.id }),
-        },
-      ],
-      { cancelable: true },
-    );
-  };
-
-  const onEdit = () => {
-    router.navigate(`projects/${task.projectId}/tasks/${task.id}/editTask`);
-  };
-
   return (
     <TouchableOpacity
       onLongPress={drag}
@@ -67,7 +38,7 @@ export default TaskCard;
 const styles = StyleSheet.create({
   taskCard: {
     backgroundColor: "#FFFFFF",
-    flexDirection: "row", // Ustawienie tekstu i przycisków obok siebie
+    flexDirection: "row",
     alignItems: "center",
     padding: 15,
     marginVertical: 5,
@@ -83,7 +54,7 @@ const styles = StyleSheet.create({
     transform: [{ scale: 1.03 }],
   },
   textContainer: {
-    flex: 1, // Pozwala tekstowi zająć całą dostępną przestrzeń
+    flex: 1,
   },
   taskName: {
     fontSize: 16,

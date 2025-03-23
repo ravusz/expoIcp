@@ -47,6 +47,7 @@ const TaskCardsList = ({ data, status }: Props) => {
           ref={bottomSheetRef}
           projectId={selectedTask.projectId}
           taskId={selectedTask.id}
+          status={status}
         />
       )}
 

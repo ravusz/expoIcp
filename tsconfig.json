@@ -5,6 +5,18 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/projects/*": [
+        "./app/(tabs)/projects/*"
+      ],
+      "@/projectsApi/*": [
+        "./app/(tabs)/projects/api/*"
+      ],
+      "@/tasks/*": [
+        "./app/(tabs)/projects/[projectId]/tasks/*"
+      ],
+      "@/tasksApi/*": [
+        "./app/(tabs)/projects/[projectId]/tasks/api/*"
       ]
     }
   },

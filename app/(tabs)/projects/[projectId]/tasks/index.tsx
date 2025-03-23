@@ -1,16 +1,12 @@
-import { Link, useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 import React from "react";
 import { useFetchAllTasks } from "./api/queries/useFetchAllTasks";
 import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 
-import AddTaskButton from "./components/addTaskButton";
-import { StyleSheet, View, Text } from "react-native";
-
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
-import TaskCard from "./components/TasksCarousel/taskCardsList/taskCard";
 
 import Button from "@/components/button";
 import { translate } from "@/i18n";
@@ -20,9 +16,7 @@ const TasksScreen = () => {
   const { projectId }: { projectId: string } = useLocalSearchParams();
   const router = useRouter();
 
-  const { data, isError, isLoading, refetch } = useFetchAllTasks(projectId);
-
-  console.log("TasksScreen", data);
+  const { data, isError, isLoading, refetch } = useFetchAllTasks();
 
   const getState = () => {
     if (isLoading) return "loading";
