@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
+import { theme } from "@/theme";
 
 type Props = {
   children: React.ReactNode;
@@ -13,10 +14,10 @@ export default Label;
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 16,
+    fontSize: theme.fontSize.sm,
     fontWeight: "600",
-    color: "#333",
-    marginBottom: 8,
-    marginTop: 12,
+    color: theme.colors.base,
+    marginBottom: theme.margin.sm,
+    marginTop: theme.margin.md,
   },
 });

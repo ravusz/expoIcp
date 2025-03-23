@@ -37,11 +37,13 @@ export default IconButton;
 
 const styles = StyleSheet.create({
   actionButton: {
-    padding: theme.paddings.sm,
+    padding: theme.padding.sm,
     borderRadius: theme.borderRadius.md,
-    marginLeft: theme.paddings.sm,
+    marginLeft: theme.padding.sm,
     alignItems: "center",
     justifyContent: "center",
+    minHeight: theme.formElement.minHeight,
+    minWidth: theme.formElement.minWidth,
   },
   primary: {
     backgroundColor: theme.colors.primary,

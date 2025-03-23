@@ -33,8 +33,8 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: theme.paddings.md,
-    paddingHorizontal: theme.paddings.md,
+    paddingVertical: theme.padding.md,
+    paddingHorizontal: theme.padding.md,
     alignItems: "center",
     justifyContent: "center",
     elevation: 3,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     borderRadius: theme.borderRadius.md,
-    minHeight: 50,
+    minHeight: theme.formElement.minHeight,
   },
   primary: {
     backgroundColor: theme.colors.primary,

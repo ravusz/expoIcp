@@ -16,7 +16,15 @@ export const theme = {
     xl: 22,
     xxl: 28,
   },
-  paddings: {
+  padding: {
+    xs: 4,
+    sm: 8,
+    md: 12,
+    lg: 16,
+    xl: 24,
+    xxl: 32,
+  },
+  margin: {
     xs: 4,
     sm: 8,
     md: 12,
@@ -31,5 +39,9 @@ export const theme = {
     xl: 16,
     xxl: 24,
     full: 9999,
+  },
+  formElement: {
+    minWidth: 50,
+    minHeight: 50,
   },
 };

@@ -10,10 +10,10 @@ type SearchInputProps = {
 };
 
 const SearchInput = ({ value, onChangeText }: SearchInputProps) => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(value);
 
   const debouncedSearch = useRef(
-    debounce((text) => {
+    debounce((text: string) => {
       onChangeText?.(text);
     }, 500),
   ).current;
