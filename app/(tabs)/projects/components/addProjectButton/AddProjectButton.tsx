@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "expo-router";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { translate } from "@/i18n";
+
+import LinkButton from "@/components/linkButton";
 
 const AddProjectButton = () => {
   return (
-    <Link href="/projects/addProject">
-      <FontAwesome6 name="add" size={24} color="black" />
-    </Link>
+    <LinkButton href="/projects/addProject" iconName="add">
+      {translate("project.addNewProject")}
+    </LinkButton>
   );
 };
 
