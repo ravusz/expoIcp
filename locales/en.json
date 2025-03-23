@@ -1,4 +1,5 @@
 {
+  "SEARCH_INPUT_PLACEHOLDER": "Wyszukaj...",
   "taskStatuses": {
     "TO_DO": "Do zrobienia",
     "IN_REVIEW": "W przeglądzie",
