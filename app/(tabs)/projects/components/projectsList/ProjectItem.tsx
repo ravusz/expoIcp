@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
-import type { NewProject } from "@/app/(tabs)/projects/api/api";
+import type { ProjectResponse } from "@/app/(tabs)/projects/api/api";
 import { theme } from "@/theme";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -10,7 +10,11 @@ import { Link } from "expo-router";
 import IconButton from "@/components/iconButton";
 import { useRouter } from "expo-router";
 
-const ProjectItem = ({ id, name, description }: Omit<NewProject, "tasks">) => {
+const ProjectItem = ({
+  id,
+  name,
+  description,
+}: Omit<ProjectResponse, "tasks">) => {
   const { mutate, isPending } = useDeleteProject();
   const router = useRouter();
 

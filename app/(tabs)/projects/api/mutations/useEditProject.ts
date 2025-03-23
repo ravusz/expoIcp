@@ -3,19 +3,14 @@ import Toast from "react-native-toast-message";
 import { translate } from "@/i18n";
 import { editProject } from "../api";
 import { projectKeys } from "../queryKeys";
-import type { NewProject } from "../api";
+import type { Project } from "../api";
 
 export const useEditProject = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      projectId,
-      data,
-    }: {
-      projectId: string;
-      data: NewProject;
-    }) => editProject(projectId, data),
+    mutationFn: ({ projectId, data }: { projectId: string; data: Project }) =>
+      editProject(projectId, data),
     onSuccess: async () => {
       Toast.show({
         type: "success",

@@ -1,10 +1,10 @@
 import React from "react";
 import { FlatList } from "react-native";
-import type { NewProject } from "@/app/(tabs)/projects/api/api";
+import type { ProjectResponse } from "@/app/(tabs)/projects/api/api";
 import ProjectItem from "./ProjectItem";
 
 type Props = {
-  data: NewProject[];
+  data: ProjectResponse[];
 };
 
 const ProjectList = ({ data }: Props) => {

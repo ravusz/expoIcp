@@ -3,7 +3,7 @@ import ScreenContainer from "@/components/screenContainer";
 import { useEditProject } from "@/app/(tabs)/projects/api/mutations/useEditProject";
 import { useFetchProjectById } from "@/app/(tabs)/projects/api/queries/useFetchProjectById";
 import { useLocalSearchParams } from "expo-router";
-import type { NewProject } from "@/app/(tabs)/projects/api/api";
+import type { Project } from "@/app/(tabs)/projects/api/api";
 import { useRouter } from "expo-router";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
@@ -18,7 +18,7 @@ const EditProjectsScreen = () => {
 
   const { mutate, isPending } = useEditProject();
 
-  const onSubmit = (data: NewProject) => {
+  const onSubmit = (data: Project) => {
     mutate(
       { projectId, data },
       {

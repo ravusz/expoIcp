@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import uuid from "react-native-uuid";
 import { PROJECTS_KEY } from "@/app/(tabs)/projects/api/api";
-import type { NewProject } from "@/app/(tabs)/projects/api/api";
+import type { ProjectResponse } from "@/app/(tabs)/projects/api/api";
 import { TASK_STATUSES } from "../constants";
 
 export type TaskStatus = keyof typeof TASK_STATUSES;
@@ -51,7 +51,7 @@ export const createNewTask = async (projectId: string, data: Task) => {
     id: taskId,
   };
 
-  const updatedProjects = projects.map((project: NewProject) => {
+  const updatedProjects = projects.map((project: ProjectResponse) => {
     if (project.id === projectId) {
       return {
         ...project,

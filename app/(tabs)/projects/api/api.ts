@@ -1,11 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import uuid from "react-native-uuid";
 
-export type NewProject = {
-  id: string;
+export type Project = {
   name: string;
   description: string;
   tasks: string[];
+};
+
+export type ProjectResponse = Project & {
+  id: string;
 };
 
 export const PROJECTS_KEY = "projects";
@@ -24,10 +27,10 @@ export const fetchProjectById = async ({
   const storedProjects = await AsyncStorage.getItem(PROJECTS_KEY);
   const projects = storedProjects ? JSON.parse(storedProjects) : [];
 
-  return projects.find((item: NewProject) => item.id === projectId);
+  return projects.find((item: ProjectResponse) => item.id === projectId);
 };
 
-export const createNewProject = async (data: NewProject) => {
+export const createNewProject = async (data: Project) => {
   const currentProjects = await fetchAllProjects();
 
   await AsyncStorage.setItem(
@@ -40,16 +43,16 @@ export const deleteProject = async (projectId: string) => {
   const currentProjects = await fetchAllProjects();
 
   const updatedProjects = currentProjects.filter(
-    (project: NewProject) => project.id !== projectId,
+    (project: ProjectResponse) => project.id !== projectId,
   );
 
   await AsyncStorage.setItem(PROJECTS_KEY, JSON.stringify(updatedProjects));
 };
 
-export const editProject = async (projectId: string, data: NewProject) => {
+export const editProject = async (projectId: string, data: Project) => {
   const currentProjects = await fetchAllProjects();
 
-  const updatedProjects = currentProjects.map((project: NewProject) =>
+  const updatedProjects = currentProjects.map((project: ProjectResponse) =>
     project.id === projectId
       ? {
         ...project,
