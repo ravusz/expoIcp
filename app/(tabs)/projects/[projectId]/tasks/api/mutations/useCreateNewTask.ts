@@ -5,12 +5,11 @@ import { createNewTask } from "../api";
 import { taskKeys } from "../queryKeys";
 import type { Task } from "../api";
 
-export const useCreateNewTask = () => {
+export const useCreateNewTask = (projectId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ projectId, data }: { projectId: string; data: Task }) =>
-      createNewTask(projectId, data),
+    mutationFn: (data: Task) => createNewTask(projectId, data),
     onSuccess: async () => {
       Toast.show({
         type: "success",
@@ -18,7 +17,7 @@ export const useCreateNewTask = () => {
       });
 
       await queryClient.invalidateQueries({
-        queryKey: [taskKeys.all],
+        queryKey: [taskKeys.byProject(projectId)],
       });
     },
     onError: () => {

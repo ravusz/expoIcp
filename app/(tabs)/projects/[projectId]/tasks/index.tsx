@@ -1,7 +1,7 @@
 import { useRouter, useLocalSearchParams } from "expo-router";
 
 import React from "react";
-import { useFetchAllTasks } from "./api/queries/useFetchAllTasks";
+import { useFetchAllProjectTasks } from "./api/queries/useFetchAllProjectTasks";
 import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 
@@ -16,7 +16,10 @@ const TasksScreen = () => {
   const { projectId }: { projectId: string } = useLocalSearchParams();
   const router = useRouter();
 
-  const { data, isError, isLoading, refetch } = useFetchAllTasks();
+  const { data, isError, isLoading, refetch } =
+    useFetchAllProjectTasks(projectId);
+
+  console.log("TasksScreen", data);
 
   const getState = () => {
     if (isLoading) return "loading";

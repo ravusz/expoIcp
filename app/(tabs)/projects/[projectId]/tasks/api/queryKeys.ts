@@ -3,5 +3,5 @@ export const taskKeys = {
   byProject: (projectId: string) =>
     [...taskKeys.all, "byProject", projectId] as const,
   byId: (projectId: string, taskId: string) =>
-    [...taskKeys.all, "byId", projectId, taskId] as const,
+    [...taskKeys.byProject(projectId), "byId", taskId] as const,
 };

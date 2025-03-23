@@ -76,6 +76,8 @@
     "deleteTaskErrorMessage": "Błąd podczas usuwania zadania",
     "editTaskSuccessMessage": "Zadanie zostało pomyślnie edytowane!",
     "editTaskErrorMessage": "Błąd podczas edytowania zadania",
+    "editTaskStatusSuccessMessage": "Status aadania został pomyślnie edytowany!",
+    "editTaskStatusErrorMessage": "Błąd podczas edytowania statusu zadania",
     "taskForm": {
       "nameField": {
         "LABEL": "Nazwa zadania",

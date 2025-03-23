@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import type { TaskResponse } from "../../../api/api";
 import { StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
@@ -16,7 +16,9 @@ type Props = {
 
 const TaskCardsList = ({ data, status }: Props) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const [items, setItems] = useState<TaskResponse[]>(data);
+
+  const currentTasks = data.filter((task) => task.status === status);
+  const [items, setItems] = useState<TaskResponse[]>(currentTasks);
   const [selectedTask, setTask] = useState<TaskResponse>(data[0]);
 
   const onSelectTask = (task: TaskResponse) => {
@@ -24,13 +26,17 @@ const TaskCardsList = ({ data, status }: Props) => {
     bottomSheetRef.current?.expand();
   };
 
+  useEffect(() => {
+    setItems(data.filter((task) => task.status === status));
+  }, [data, status]);
+
   return (
     <View style={styles.page}>
       <Text style={styles.statusTitle}>
         {translate(`taskStatuses.${status}`)}
       </Text>
       <DraggableFlatList
-        data={items.filter((task) => task.status === status)}
+        data={items}
         onDragEnd={({ data }) => setItems(data)}
         keyExtractor={(item) => item.id}
         renderItem={({ item, drag, isActive }) => (
