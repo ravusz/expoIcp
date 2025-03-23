@@ -19,6 +19,7 @@ const TaskCard = ({ task, drag, isActive, onPress }: Props) => {
       description={task.description}
       onPress={onPress}
       disabled={isActive}
+      isActive={isActive}
     >
       <TouchableOpacity onLongPress={drag} disabled={isActive}>
         <MaterialCommunityIcons

@@ -9,6 +9,7 @@ type Props = PressableProps & {
   order?: number;
   title: string;
   description: string;
+  isActive: boolean;
   children?: React.ReactNode;
 };
 
@@ -17,11 +18,16 @@ const ListCardItem = ({
   title,
   description,
   children,
+  isActive,
   onPress,
   ...rest
 }: Props) => {
   return (
-    <Pressable style={styles.cardContainer} onPress={onPress} {...rest}>
+    <Pressable
+      style={[styles.cardContainer, isActive && styles.activeCard]}
+      onPress={onPress}
+      {...rest}
+    >
       <View style={styles.cardContent}>
         <View style={{ width: "85%" }}>
           <Text style={styles.cardTitle} numberOfLines={1}>
@@ -40,6 +46,9 @@ const ListCardItem = ({
 export default ListCardItem;
 
 const styles = StyleSheet.create({
+  activeCard: {
+    opacity: 0.5,
+  },
   cardContainer: {
     flex: 1,
     backgroundColor: theme.colors.white,
