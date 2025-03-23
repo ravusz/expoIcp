@@ -21,7 +21,7 @@ const ListCardItem = ({
   return (
     <Pressable style={styles.cardContainer} onPress={onPress} {...rest}>
       <View style={styles.cardContent}>
-        <View>
+        <View style={{ width: "85%" }}>
           <Text style={styles.cardTitle} numberOfLines={1}>
             {title}
           </Text>
