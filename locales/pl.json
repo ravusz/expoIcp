@@ -59,6 +59,7 @@
     }
   },
   "task": {
+    "CHANGE_TASK_STATUS": "Zmień status zadania",
     "deleteConfirmation": {
       "TITLE": "Usuwanie",
       "DESCRIPTION": "Czy na pewno chcesz usunąć to zadanie?",

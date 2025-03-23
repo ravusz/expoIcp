@@ -8,14 +8,15 @@ import { useFetchTaskById } from "@/tasksApi/queries/useFetchTaskById";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
 import TaskStatusChanger from "../taskStatusChanger";
-import { TASK_STATUSES } from "@/tasks/constants";
 import EditActionButton from "./EditActionButton";
 import DeleteActionButton from "./DeleteActionButton";
+import { theme } from "@/theme";
+import { TaskStatus } from "@/tasksApi/api";
 
 type Props = {
   projectId: string;
   taskId: string;
-  status: keyof typeof TASK_STATUSES;
+  status: TaskStatus;
 };
 
 const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
@@ -60,7 +61,7 @@ const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
                   <View>
                     <Text
                       style={styles.title}
-                      numberOfLines={1}
+                      numberOfLines={2}
                       ellipsizeMode="tail"
                     >
                       {data?.name}
@@ -68,12 +69,13 @@ const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
 
                     <Text
                       style={styles.description}
-                      numberOfLines={2}
+                      numberOfLines={5}
                       ellipsizeMode="tail"
                     >
                       {data?.description}
                     </Text>
                   </View>
+
                   <TaskStatusChanger
                     projectId={projectId}
                     taskId={taskId}
@@ -100,31 +102,35 @@ export default ActionsBottomSheet;
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    padding: 24,
+    padding: theme.padding.xl,
   },
   dataContainer: {
     flex: 1,
-    justifyContent: "space-between",
     height: "100%",
+    justifyContent: "space-between",
   },
   title: {
-    fontSize: 18,
+    fontSize: theme.fontSize.lg,
     fontWeight: "bold",
-    color: "#333",
-    marginBottom: 4,
+    color: theme.colors.base,
+    marginBottom: theme.padding.xl,
   },
   description: {
-    fontSize: 14,
-    color: "#666",
+    fontSize: theme.fontSize.md,
+    color: theme.colors.secondary,
+  },
+  actions: {
+    marginTop: "auto",
   },
   buttonWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 12,
-    alignSelf: "flex-end", // Przyciska do dołu
+    gap: theme.margin.md,
+    alignSelf: "flex-end",
   },
   emptyText: {
     textAlign: "center",
-    color: "#999",
+    color: theme.colors.lightGray,
+    fontSize: theme.fontSize.sm,
   },
 });
