@@ -4,17 +4,11 @@ import { translate } from "@/i18n";
 import { deleteTask } from "../api";
 import { taskKeys } from "../queryKeys";
 
-export const useDeleteTask = () => {
+export const useDeleteTask = (projectId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      projectId,
-      taskId,
-    }: {
-      projectId: string;
-      taskId: string;
-    }) => deleteTask(projectId, taskId),
+    mutationFn: (taskId: string) => deleteTask(projectId, taskId),
     onSuccess: async () => {
       Toast.show({
         type: "success",
@@ -22,7 +16,7 @@ export const useDeleteTask = () => {
       });
 
       await queryClient.invalidateQueries({
-        queryKey: [taskKeys.all],
+        queryKey: [taskKeys.byProject(projectId)],
       });
     },
     onError: () => {

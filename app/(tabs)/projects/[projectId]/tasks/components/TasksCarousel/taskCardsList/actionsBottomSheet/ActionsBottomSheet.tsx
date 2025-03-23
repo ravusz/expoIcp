@@ -1,10 +1,6 @@
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import ActionButton from "@/components/actionButton";
-import { useDeleteTask } from "../../../../api/mutations/useDeleteTask";
-import { useRouter } from "expo-router";
-import { Alert } from "react-native";
 import { translate } from "@/i18n";
 import Button from "@/components/button";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
@@ -13,6 +9,8 @@ import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
 import TaskStatusChanger from "../taskStatusChanger";
 import { TASK_STATUSES } from "@/tasks/constants";
+import EditActionButton from "./EditActionButton";
+import DeleteActionButton from "./DeleteActionButton";
 
 type Props = {
   projectId: string;
@@ -22,35 +20,10 @@ type Props = {
 
 const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
   ({ projectId, taskId, status }: Props, ref) => {
-    const { isPending, mutate } = useDeleteTask();
     const { data, isLoading, isError, refetch } = useFetchTaskById(
       projectId,
       taskId,
     );
-
-    const router = useRouter();
-
-    const onDelete = () => {
-      Alert.alert(
-        translate("task.deleteConfirmation.TITLE"),
-        translate("task.deleteConfirmation.DESCRIPTION"),
-        [
-          {
-            text: translate("task.deleteConfirmation.CANCEL_BUTTON"),
-            style: "cancel",
-          },
-          {
-            text: translate("task.deleteConfirmation.SUBMIT_BUTTON"),
-            onPress: () => mutate({ projectId, taskId }),
-          },
-        ],
-        { cancelable: true },
-      );
-    };
-
-    const onEdit = () => {
-      router.navigate(`projects/${projectId}/tasks/${taskId}/editTask`);
-    };
 
     const getState = () => {
       if (isLoading) return "loading";
@@ -107,17 +80,8 @@ const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
                     status={status}
                   />
                   <View style={styles.buttonWrapper}>
-                    <ActionButton
-                      onPress={onEdit}
-                      variant="success"
-                      name="pencil-outline"
-                    />
-                    <ActionButton
-                      onPress={onDelete}
-                      variant="error"
-                      name="delete-outline"
-                      isLoading={isPending}
-                    />
+                    <EditActionButton projectId={projectId} taskId={taskId} />
+                    <DeleteActionButton projectId={projectId} taskId={taskId} />
                   </View>
                 </View>
               ),

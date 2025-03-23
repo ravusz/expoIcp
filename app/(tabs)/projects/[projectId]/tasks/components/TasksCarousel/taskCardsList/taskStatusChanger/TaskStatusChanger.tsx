@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Button from "@/components/button";
 import { translate } from "@/i18n";
+import { useBottomSheet } from "@gorhom/bottom-sheet";
 
 import { TASK_STATUSES } from "@/tasks/constants";
 import { useUpdateTaskStatus } from "@/tasksApi/mutations/useUpdateTaskStatus";
@@ -14,13 +15,21 @@ type Props = {
 };
 
 const TaskStatusChanger = ({ projectId, taskId, status }: Props) => {
+  const { close } = useBottomSheet();
   const { mutate, isPending } = useUpdateTaskStatus(projectId);
 
   const handleChangeStatus = (selectedStatus: TaskStatus) => {
-    mutate({
-      taskId,
-      status: selectedStatus,
-    });
+    mutate(
+      {
+        taskId,
+        status: selectedStatus,
+      },
+      {
+        onSettled: () => {
+          close();
+        },
+      },
+    );
   };
 
   return (
