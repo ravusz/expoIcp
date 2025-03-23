@@ -9,6 +9,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { TASK_STATUSES } from "../../../constants";
 import AddTaskButton from "../../addTaskButton";
 import { theme } from "@/theme";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 type Props = {
   data: TaskResponse[];
@@ -33,9 +34,17 @@ const TaskCardsList = ({ data, status }: Props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.statusTitle}>
-        {translate(`taskStatuses.${status}`)}
-      </Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.statusTitle}>
+          {translate(`taskStatuses.${status}`)}
+        </Text>
+        <MaterialCommunityIcons
+          name="dots-horizontal"
+          size={24}
+          color={theme.colors.base}
+        />
+      </View>
+
       <View style={styles.listContainer}>
         <DraggableFlatList
           data={items}
@@ -71,12 +80,16 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: theme.padding.lg,
   },
+  titleContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: theme.margin.md,
+  },
   statusTitle: {
     fontSize: theme.fontSize.lg,
     fontWeight: "600",
     color: theme.colors.base,
     textAlign: "center",
-    marginBottom: theme.margin.md,
   },
   listContainer: {
     flex: 1,
