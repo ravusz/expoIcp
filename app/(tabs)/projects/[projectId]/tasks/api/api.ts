@@ -107,15 +107,11 @@ export const deleteTask = async (projectId: string, taskId: string) => {
   await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
 };
 
-export const updateTaskStatus = async (
-  taskId: string,
-  projectId: string,
-  status: TaskStatus,
-) => {
+export const updateTaskStatus = async (taskId: string, status: TaskStatus) => {
   const currentTasks = await fetchAllTasks();
 
   const updatedTasks = currentTasks.map((task: TaskResponse) =>
-    task.id !== taskId ? { ...task, status } : task,
+    task.id === taskId ? { ...task, status } : task,
   );
 
   await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));

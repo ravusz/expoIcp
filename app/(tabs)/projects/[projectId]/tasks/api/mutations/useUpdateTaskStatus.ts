@@ -5,19 +5,12 @@ import { updateTaskStatus } from "../api";
 import { taskKeys } from "../queryKeys";
 import type { TaskStatus } from "../api";
 
-export const useUpdateTaskStatus = () => {
+export const useUpdateTaskStatus = (projectId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      projectId,
-      taskId,
-      status,
-    }: {
-      projectId: string;
-      taskId: string;
-      status: TaskStatus;
-    }) => updateTaskStatus(projectId, taskId, status),
+    mutationFn: ({ taskId, status }: { taskId: string; status: TaskStatus }) =>
+      updateTaskStatus(taskId, status),
     onSuccess: async () => {
       Toast.show({
         type: "success",
@@ -25,7 +18,7 @@ export const useUpdateTaskStatus = () => {
       });
 
       await queryClient.invalidateQueries({
-        queryKey: [taskKeys.all],
+        queryKey: [taskKeys.byProject(projectId)],
       });
     },
     onError: () => {

@@ -14,11 +14,10 @@ type Props = {
 };
 
 const TaskStatusChanger = ({ projectId, taskId, status }: Props) => {
-  const { mutate, isPending } = useUpdateTaskStatus();
+  const { mutate, isPending } = useUpdateTaskStatus(projectId);
 
   const handleChangeStatus = (selectedStatus: TaskStatus) => {
     mutate({
-      projectId,
       taskId,
       status: selectedStatus,
     });
