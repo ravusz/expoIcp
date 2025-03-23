@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
+import { theme } from "@/theme";
 
 export type ValidationErrorMessageProps = {
   errorMessage?: string;
@@ -17,10 +18,10 @@ export default ValidationErrorMessage;
 
 const styles = StyleSheet.create({
   errorMessage: {
-    fontSize: 12,
+    fontSize: theme.fontSize.xs,
     fontWeight: "bold",
-    color: "#FF4F4F",
-    marginTop: 2,
-    marginBottom: 10,
+    color: theme.colors.danger,
+    marginTop: theme.margin.xs,
+    marginBottom: theme.margin.sm,
   },
 });
