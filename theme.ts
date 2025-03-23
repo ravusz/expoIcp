@@ -1,8 +1,35 @@
 export const theme = {
   colors: {
     base: "#15020c",
-    white: "white",
-    yellow: "#FFEB3B",
-    coolGray: "#8B95A1",
+    primary: "#007bff",
+    secondary: "#6c757d",
+    danger: "#dc3545",
+    info: "#17a2b8",
+    white: "#ffffff",
+    black: "#000000",
+  },
+  fontSize: {
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 22,
+    xxl: 28,
+  },
+  paddings: {
+    xs: 4,
+    sm: 8,
+    md: 12,
+    lg: 16,
+    xl: 24,
+    xxl: 32,
+  },
+  borderRadius: {
+    sm: 4,
+    md: 8,
+    lg: 12,
+    xl: 16,
+    xxl: 24,
+    full: 9999,
   },
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import ActionButton from "@/components/actionButton";
+import IconButton from "@/components/iconButton";
 import { useBottomSheet } from "@gorhom/bottom-sheet";
 import { Alert } from "react-native";
 import { translate } from "@/i18n";
@@ -38,9 +38,9 @@ const DeleteActionButton = ({ projectId, taskId }: Props) => {
   };
 
   return (
-    <ActionButton
+    <IconButton
       onPress={onDelete}
-      variant="error"
+      variant="danger"
       name="delete-outline"
       isLoading={isPending}
     />

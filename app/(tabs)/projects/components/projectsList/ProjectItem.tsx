@@ -7,7 +7,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { translate } from "@/i18n";
 import { useDeleteProject } from "@/app/(tabs)/projects/api/mutations/useDeleteProject";
 import { Link } from "expo-router";
-import ActionButton from "@/components/actionButton";
+import IconButton from "@/components/iconButton";
 import { useRouter } from "expo-router";
 
 const ProjectItem = ({ id, name, description }: Omit<NewProject, "tasks">) => {
@@ -39,15 +39,10 @@ const ProjectItem = ({ id, name, description }: Omit<NewProject, "tasks">) => {
   const rightSwipe = () => {
     return (
       <View style={styles.swipeContainer}>
-        <ActionButton
-          onPress={onEdit}
-          variant="success"
-          name="pencil-outline"
-        />
-
-        <ActionButton
+        <IconButton onPress={onEdit} variant="info" name="pencil-outline" />
+        <IconButton
           onPress={onDelete}
-          variant="error"
+          variant="danger"
           name="delete-outline"
           isLoading={isPending}
         />

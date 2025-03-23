@@ -1,5 +1,5 @@
 import React from "react";
-import ActionButton from "@/components/actionButton";
+import IconButton from "@/components/iconButton";
 import { useRouter } from "expo-router";
 import { useBottomSheet } from "@gorhom/bottom-sheet";
 
@@ -17,9 +17,7 @@ const EditActionButton = ({ projectId, taskId }: Props) => {
     close();
   };
 
-  return (
-    <ActionButton onPress={onEdit} variant="success" name="pencil-outline" />
-  );
+  return <IconButton onPress={onEdit} variant="info" name="pencil-outline" />;
 };
 
 export default EditActionButton;

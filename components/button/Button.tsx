@@ -1,13 +1,14 @@
+/* eslint-disable react-native/no-unused-styles */
 import React from "react";
 import { Pressable, Text, StyleSheet, ActivityIndicator } from "react-native";
 import type { PressableProps } from "react-native";
 import { theme } from "@/theme";
 
-type Variant = "primary" | "secondary" | "danger";
+export type ButtonVariant = "primary" | "secondary" | "danger" | "info";
 
 type Props = PressableProps & {
   children: React.ReactNode;
-  variant?: Variant;
+  variant?: ButtonVariant;
   isLoading?: boolean;
 };
 
@@ -20,7 +21,7 @@ const Button = ({
   return (
     <Pressable style={[styles.button, styles[variant]]} {...rest}>
       {isLoading ? (
-        <ActivityIndicator size={24} color="#fff" />
+        <ActivityIndicator size={24} color={theme.colors.white} />
       ) : (
         <Text style={styles.text}>{children}</Text>
       )}
@@ -32,30 +33,34 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-
+    paddingVertical: theme.paddings.md,
+    paddingHorizontal: theme.paddings.md,
     alignItems: "center",
     justifyContent: "center",
     elevation: 3,
-    shadowColor: "#000",
+    shadowColor: theme.colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
+    borderRadius: theme.borderRadius.md,
+    minHeight: 50,
   },
   primary: {
-    backgroundColor: theme.colors.yellow,
+    backgroundColor: theme.colors.primary,
   },
   secondary: {
-    backgroundColor: theme.colors.gray,
+    backgroundColor: theme.colors.secondary,
   },
   danger: {
-    backgroundColor: theme.colors.red,
+    backgroundColor: theme.colors.danger,
+  },
+  info: {
+    backgroundColor: theme.colors.info,
   },
   text: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: theme.colors.base,
+    fontSize: theme.fontSize.md,
+    color: theme.colors.white,
     textAlign: "center",
+    fontWeight: "500",
   },
 });

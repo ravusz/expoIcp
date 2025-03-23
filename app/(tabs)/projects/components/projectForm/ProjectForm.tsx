@@ -78,6 +78,7 @@ const ProjectForm = ({
       <Button
         onPress={handleSubmit(onSubmit)}
         disabled={isLoading || Object.keys(errors).length > 0}
+        isLoading={isLoading}
       >
         {submitText}
       </Button>
