@@ -6,7 +6,6 @@ import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeabl
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { translate } from "@/i18n";
 import { useDeleteProject } from "@/app/(tabs)/projects/api/mutations/useDeleteProject";
-import { Link } from "expo-router";
 import IconButton from "@/components/iconButton";
 import { useRouter } from "expo-router";
 import ListCardItem from "@/components/list/listCardItem";

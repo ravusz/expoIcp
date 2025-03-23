@@ -1,18 +1,16 @@
-import { Text } from "react-native";
-
 import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
 import { useFetchAllProjects } from "@/app/(tabs)/projects/api/queries/useFetchAllProjects";
 import ErrorScreen from "@/components/errorScreen";
 import EmptyList from "@/components/list/emptyList";
 import ProjectList from "./components/projectsList";
 import ProjectSearchInput from "./components/projectSearchInput";
 import AddProjectButton from "./components/addProjectButton";
-
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
-
 import Button from "@/components/button";
 import { translate } from "@/i18n";
+import { theme } from "@/theme";
 
 const ProjectsScreen = () => {
   const { data, isError, isLoading, refetch } = useFetchAllProjects();
@@ -21,17 +19,16 @@ const ProjectsScreen = () => {
   const filteredData =
     (search
       ? data?.filter(
-        ({ name, description }) =>
-          name.toLowerCase().includes(search.toLowerCase()) ||
+          ({ name, description }) =>
+            name.toLowerCase().includes(search.toLowerCase()) ||
             description.toLowerCase().includes(search.toLowerCase()),
-      )
+        )
       : data) || [];
 
   const getState = () => {
     if (isLoading) return "loading";
     if (isError) return "error";
     if (data?.length === 0) return "empty";
-
     return "data";
   };
 
@@ -63,11 +60,15 @@ const ProjectsScreen = () => {
             />
           ),
           data: (
-            <>
-              <ProjectSearchInput search={search} setSearch={setSearch} />
-              <ProjectList data={filteredData} />
+            <View style={styles.container}>
+              <View style={styles.searchContainer}>
+                <ProjectSearchInput search={search} setSearch={setSearch} />
+              </View>
+              <View style={styles.listContainer}>
+                <ProjectList data={filteredData} />
+              </View>
               <AddProjectButton />
-            </>
+            </View>
           ),
         }[state]
       }
@@ -76,3 +77,16 @@ const ProjectsScreen = () => {
 };
 
 export default ProjectsScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: theme.padding.lg,
+  },
+  searchContainer: {
+    marginBottom: theme.margin.md,
+  },
+  listContainer: {
+    flex: 1,
+  },
+});

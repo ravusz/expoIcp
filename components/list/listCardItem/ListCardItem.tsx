@@ -1,21 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
+
+import type { PressableProps } from "react-native";
+
 import { theme } from "@/theme";
 
-type Props = {
+type Props = PressableProps & {
   title: string;
   description: string;
   children?: React.ReactNode;
-  onPress?: () => void;
 };
 
-const ListCardItem = ({ title, description, children, onPress }: Props) => {
+const ListCardItem = ({
+  title,
+  description,
+  children,
+  onPress,
+  ...rest
+}: Props) => {
   return (
-    <Pressable style={styles.cardContainer} onPress={onPress}>
+    <Pressable style={styles.cardContainer} onPress={onPress} {...rest}>
       <View style={styles.cardContent}>
         <View>
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Text style={styles.cardDescription}>{description}</Text>
+          <Text style={styles.cardTitle} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={styles.cardDescription} numberOfLines={1}>
+            {description}
+          </Text>
         </View>
         {children}
       </View>

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import type { TaskResponse } from "../../../api/api";
+import type { TaskResponse, TaskStatus } from "../../../api/api";
 import { StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
 import DraggableFlatList from "react-native-draggable-flatlist";
@@ -8,10 +8,11 @@ import TaskCard from "./taskCard";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { TASK_STATUSES } from "../../../constants";
 import AddTaskButton from "../../addTaskButton";
+import { theme } from "@/theme";
 
 type Props = {
   data: TaskResponse[];
-  status: keyof typeof TASK_STATUSES;
+  status: TaskStatus;
 };
 
 const TaskCardsList = ({ data, status }: Props) => {
@@ -31,23 +32,26 @@ const TaskCardsList = ({ data, status }: Props) => {
   }, [data, status]);
 
   return (
-    <View style={styles.page}>
+    <View style={styles.container}>
       <Text style={styles.statusTitle}>
         {translate(`taskStatuses.${status}`)}
       </Text>
-      <DraggableFlatList
-        data={items}
-        onDragEnd={({ data }) => setItems(data)}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item, drag, isActive }) => (
-          <TaskCard
-            task={item}
-            drag={drag}
-            isActive={isActive}
-            onPress={() => onSelectTask(item)}
-          />
-        )}
-      />
+      <View style={styles.listContainer}>
+        <DraggableFlatList
+          data={items}
+          onDragEnd={({ data }) => setItems(data)}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, drag, isActive }) => (
+            <TaskCard
+              task={item}
+              drag={drag}
+              isActive={isActive}
+              onPress={() => onSelectTask(item)}
+            />
+          )}
+        />
+      </View>
+      {status === TASK_STATUSES.TO_DO && <AddTaskButton />}
       {selectedTask && (
         <ActionsBottomSheet
           ref={bottomSheetRef}
@@ -56,8 +60,6 @@ const TaskCardsList = ({ data, status }: Props) => {
           status={status}
         />
       )}
-
-      {status === TASK_STATUSES.TO_DO && <AddTaskButton />}
     </View>
   );
 };
@@ -65,15 +67,18 @@ const TaskCardsList = ({ data, status }: Props) => {
 export default TaskCardsList;
 
 const styles = StyleSheet.create({
-  page: {
+  container: {
     flex: 1,
-    padding: 16,
+    padding: theme.padding.lg,
   },
   statusTitle: {
-    fontSize: 18,
+    fontSize: theme.fontSize.lg,
     fontWeight: "600",
-    color: "#333",
+    color: theme.colors.base,
     textAlign: "center",
-    marginBottom: 10,
+    marginBottom: theme.margin.md,
+  },
+  listContainer: {
+    flex: 1,
   },
 });
