@@ -19,8 +19,6 @@ const TasksScreen = () => {
   const { data, isError, isLoading, refetch } =
     useFetchAllProjectTasks(projectId);
 
-  console.log("TasksScreen", data);
-
   const getState = () => {
     if (isLoading) return "loading";
     if (isError) return "error";

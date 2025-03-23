@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import type { TaskResponse, TaskStatus } from "../../../api/api";
 import { StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
@@ -10,6 +10,8 @@ import { TASK_STATUSES } from "../../../constants";
 import AddTaskButton from "../../addTaskButton";
 import { theme } from "@/theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { useUpdateTasksOrder } from "@/tasksApi/mutations/useUpdateTasksOrder";
+import { useLocalSearchParams } from "expo-router";
 
 type Props = {
   data: TaskResponse[];
@@ -17,20 +19,22 @@ type Props = {
 };
 
 const TaskCardsList = ({ data, status }: Props) => {
+  const { projectId }: { projectId: string } = useLocalSearchParams();
+
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const currentTasks = data.filter((task) => task.status === status);
-  const [items, setItems] = useState<TaskResponse[]>(currentTasks);
+  const { mutate } = useUpdateTasksOrder(projectId);
+
+  const currentTasks = data
+    .filter((task) => task.status === status)
+    .sort((a, b) => a.order - b.order);
+
   const [selectedTask, setTask] = useState<TaskResponse>(data[0]);
 
   const onSelectTask = (task: TaskResponse) => {
     setTask(task);
     bottomSheetRef.current?.expand();
   };
-
-  useEffect(() => {
-    setItems(data.filter((task) => task.status === status));
-  }, [data, status]);
 
   return (
     <View style={styles.container}>
@@ -47,14 +51,16 @@ const TaskCardsList = ({ data, status }: Props) => {
 
       <View style={styles.listContainer}>
         <DraggableFlatList
-          data={items}
-          onDragEnd={({ data }) => setItems(data)}
+          data={currentTasks}
+          onDragEnd={({ data }) => {
+            mutate({ ids: data.map(({ id }) => id), status });
+          }}
           keyExtractor={(item) => item.id}
           renderItem={({ item, drag, isActive }) => (
             <TaskCard
               task={item}
               drag={drag}
-              isActive={isActive}
+              isActive={false}
               onPress={() => onSelectTask(item)}
             />
           )}

@@ -15,6 +15,7 @@ export type Task = {
 
 export type TaskResponse = Task & {
   id: string;
+  order: number;
 };
 
 export const TASKS_KEY = "tasks";
@@ -49,6 +50,8 @@ export const createNewTask = async (projectId: string, data: Task) => {
     status: TASK_STATUSES.TO_DO,
     projectId,
     id: taskId,
+    order: currentTasks.filter(({ status }) => status === TASK_STATUSES.TO_DO)
+      .length,
   };
 
   const updatedProjects = projects.map((project: ProjectResponse) => {
@@ -111,7 +114,25 @@ export const updateTaskStatus = async (taskId: string, status: TaskStatus) => {
   const currentTasks = await fetchAllTasks();
 
   const updatedTasks = currentTasks.map((task: TaskResponse) =>
-    task.id === taskId ? { ...task, status } : task,
+    task.id === taskId
+      ? {
+        ...task,
+        status,
+        order: currentTasks.filter((task) => task.status === status).length,
+      }
+      : task,
+  );
+
+  await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
+};
+
+export const updateTasksOrder = async (ids: string[], status: TaskStatus) => {
+  const currentTasks = await fetchAllTasks();
+
+  const updatedTasks = currentTasks.map((task: TaskResponse) =>
+    task.status === status
+      ? { ...task, order: ids.findIndex((id) => id === task.id) }
+      : task,
   );
 
   await AsyncStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));

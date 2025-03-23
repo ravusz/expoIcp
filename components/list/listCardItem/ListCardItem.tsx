@@ -6,12 +6,14 @@ import type { PressableProps } from "react-native";
 import { theme } from "@/theme";
 
 type Props = PressableProps & {
+  order?: number;
   title: string;
   description: string;
   children?: React.ReactNode;
 };
 
 const ListCardItem = ({
+  order,
   title,
   description,
   children,
@@ -23,7 +25,7 @@ const ListCardItem = ({
       <View style={styles.cardContent}>
         <View style={{ width: "85%" }}>
           <Text style={styles.cardTitle} numberOfLines={1}>
-            {title}
+            {order ? `${order}. ${title}` : title}
           </Text>
           <Text style={styles.cardDescription} numberOfLines={1}>
             {description}
