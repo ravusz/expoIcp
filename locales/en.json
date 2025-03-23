@@ -60,6 +60,7 @@
   },
   "task": {
     "CHANGE_TASK_STATUS": "Zmień status zadania",
+    "EMPTY_TASKS_LIST": "Brak zadań",
     "deleteConfirmation": {
       "TITLE": "Usuwanie",
       "DESCRIPTION": "Czy na pewno chcesz usunąć to zadanie?",
@@ -78,8 +79,10 @@
     "deleteTaskErrorMessage": "Błąd podczas usuwania zadania",
     "editTaskSuccessMessage": "Zadanie zostało pomyślnie edytowane!",
     "editTaskErrorMessage": "Błąd podczas edytowania zadania",
-    "editTaskStatusSuccessMessage": "Status aadania został pomyślnie edytowany!",
+    "editTaskStatusSuccessMessage": "Status zadania został pomyślnie edytowany!",
     "editTaskStatusErrorMessage": "Błąd podczas edytowania statusu zadania",
+    "updateTaskOrderSuccessMessage": "Kolejność zadań została zmieniona!",
+    "updateTaskOrderErrorMessage": "Błąd podczas zmiany kolejności zadań!",
     "taskForm": {
       "nameField": {
         "LABEL": "Nazwa zadania",

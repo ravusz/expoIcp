@@ -14,7 +14,7 @@ export const useUpdateTasksOrder = (projectId: string) => {
     onSuccess: async () => {
       Toast.show({
         type: "success",
-        text1: translate("task.editTaskStatusSuccessMessage"),
+        text1: translate("task.updateTaskOrderSuccessMessage"),
       });
 
       await queryClient.invalidateQueries({
@@ -24,7 +24,7 @@ export const useUpdateTasksOrder = (projectId: string) => {
     onError: () => {
       Toast.show({
         type: "error",
-        text1: translate("task.editTaskStatusErrorMessage"),
+        text1: translate("task.updateTaskOrderErrorMessage"),
       });
     },
   });

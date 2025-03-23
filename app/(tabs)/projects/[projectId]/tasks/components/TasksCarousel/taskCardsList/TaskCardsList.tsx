@@ -12,6 +12,7 @@ import { theme } from "@/theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useUpdateTasksOrder } from "@/tasksApi/mutations/useUpdateTasksOrder";
 import { useLocalSearchParams } from "expo-router";
+import TaskListEmptyState from "./taskListEmptyState";
 
 type Props = {
   data: TaskResponse[];
@@ -51,6 +52,7 @@ const TaskCardsList = ({ data, status }: Props) => {
 
       <View style={styles.listContainer}>
         <DraggableFlatList
+          ListEmptyComponent={<TaskListEmptyState />}
           data={currentTasks}
           onDragEnd={({ data }) => {
             mutate({ ids: data.map(({ id }) => id), status });
@@ -60,7 +62,7 @@ const TaskCardsList = ({ data, status }: Props) => {
             <TaskCard
               task={item}
               drag={drag}
-              isActive={false}
+              isActive={isActive}
               onPress={() => onSelectTask(item)}
             />
           )}
