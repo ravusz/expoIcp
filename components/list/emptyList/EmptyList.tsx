@@ -26,28 +26,34 @@ export default EmptyList;
 
 const styles = StyleSheet.create({
   icon: {
-    paddingBottom: 20,
-    color: theme.colors.base,
+    paddingBottom: theme.padding.md,
+    color: theme.colors.primary,
   },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
-    padding: 20,
+    backgroundColor: theme.colors.white,
+    padding: theme.padding.lg,
+    elevation: 3,
+    shadowColor: theme.colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    borderRadius: theme.borderRadius.md,
   },
   title: {
-    fontSize: 18,
+    fontSize: theme.fontSize.lg,
     fontWeight: "bold",
     color: theme.colors.base,
     textAlign: "center",
-    marginBottom: 15,
+    marginBottom: theme.margin.sm,
   },
   description: {
-    fontSize: 16,
+    fontSize: theme.fontSize.md,
     color: theme.colors.base,
     textAlign: "center",
-    marginBottom: 25,
-    paddingHorizontal: 15,
+    marginBottom: theme.margin.lg,
+    paddingHorizontal: theme.padding.md,
   },
 });
