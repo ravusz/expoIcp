@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import ScreenLoader from "@/components/screenLoader";
@@ -58,7 +58,13 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
                   }
                 />
               ),
-              empty: <Text style={styles.emptyText}>No data</Text>,
+              empty: (
+                <View style={{ marginTop: theme.margin.xl }}>
+                  <Text style={styles.emptyText}>
+                    {translate("statistics.NO_DATA")}
+                  </Text>
+                </View>
+              ),
               data: (
                 <ProjectsSearchList
                   data={data!}
@@ -73,7 +79,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
   },
 );
 
-ProjectsSearchBottomSheet.displayName = "ActionsBottomSheet";
+ProjectsSearchBottomSheet.displayName = "ProjectsSearchBottomSheet";
 
 export default ProjectsSearchBottomSheet;
 
@@ -108,7 +114,8 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     textAlign: "center",
-    color: theme.colors.lightGray,
+    color: theme.colors.base,
     fontSize: theme.fontSize.sm,
+    fontWeight: "600",
   },
 });

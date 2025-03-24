@@ -10,7 +10,7 @@ type Props = {
   onSelectProject: (task: ProjectStatisticsResponse) => void;
 };
 
-const ProjectsSearchBottomSheet = ({ data, onSelectProject }: Props) => {
+const ProjectsSearchList = ({ data, onSelectProject }: Props) => {
   const { close } = useBottomSheet();
 
   return (
@@ -32,9 +32,9 @@ const ProjectsSearchBottomSheet = ({ data, onSelectProject }: Props) => {
   );
 };
 
-ProjectsSearchBottomSheet.displayName = "ProjectsSearchBottomSheet";
+ProjectsSearchList.displayName = "ProjectsSearchBottomSheet";
 
-export default ProjectsSearchBottomSheet;
+export default ProjectsSearchList;
 
 const styles = StyleSheet.create({
   dataContainer: {
