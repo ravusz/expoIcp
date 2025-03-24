@@ -31,15 +31,6 @@ const initI18n = async () => {
 
 initI18n();
 
-export const translate = (key: string) => i18n.t(key);
-
-export const loadLanguage = async () => {
-  const savedLanguage = await AsyncStorage.getItem("language");
-  if (savedLanguage) {
-    i18n.changeLanguage(savedLanguage);
-  }
-};
-
 export const changeLanguage = async (lang: string) => {
   await AsyncStorage.setItem("language", lang);
   i18n.changeLanguage(lang);

@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 
 type Props = {
@@ -12,11 +12,13 @@ type Props = {
 };
 
 const EmptyList = ({ button, title, description }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons name="bed-empty" size={60} style={styles.icon} />
-      <Text style={styles.title}>{translate(title)}</Text>
-      <Text style={styles.description}>{translate(description)}</Text>
+      <Text style={styles.title}>{t(title)}</Text>
+      <Text style={styles.description}>{t(description)}</Text>
       {button}
     </View>
   );

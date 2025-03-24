@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
-import { changeLanguage, loadLanguage } from "@/i18n";
+import { changeLanguage } from "@/i18n";
 import { Picker } from "@react-native-picker/picker";
 import { useTranslation } from "react-i18next";
 
@@ -11,15 +11,11 @@ import { LOCALES } from "@/constants";
 const LanguagePicker = () => {
   const { i18n, t } = useTranslation();
 
-  useEffect(() => {
-    loadLanguage();
-  }, [i18n]);
-
   return (
     <View style={styles.container}>
       <Label>{t("settings.SELECT_LAGUAGE")}</Label>
       <Picker
-        selectedValue={"pl"}
+        selectedValue={i18n.language}
         onValueChange={(language) => {
           changeLanguage(language);
         }}

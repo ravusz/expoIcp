@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 
 type Props = {
@@ -10,13 +10,13 @@ type Props = {
 };
 
 const ErrorScreen = ({ button }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <MaterialIcons name="error-outline" size={60} style={styles.icon} />
-      <Text style={styles.errorText}>{translate("errorScreen.TITLE")}</Text>
-      <Text style={styles.messageText}>
-        {translate("errorScreen.DESCRIPTION")}
-      </Text>
+      <Text style={styles.errorText}>{t("errorScreen.TITLE")}</Text>
+      <Text style={styles.messageText}>{t("errorScreen.DESCRIPTION")}</Text>
       {button}
     </View>
   );

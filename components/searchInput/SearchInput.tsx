@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import type { TextInputProps } from "react-native";
 import Input from "@/components/input";
 import debounce from "lodash.debounce";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 type SearchInputProps = {
   value: TextInputProps["value"];
@@ -11,6 +11,8 @@ type SearchInputProps = {
 };
 
 const SearchInput = ({ value, onChangeText }: SearchInputProps) => {
+  const { t } = useTranslation();
+
   const [search, setSearch] = useState(value);
 
   const debouncedSearch = useRef(
@@ -28,7 +30,7 @@ const SearchInput = ({ value, onChangeText }: SearchInputProps) => {
     <Input
       value={search}
       onChangeText={handleChangeText}
-      placeholder={translate("SEARCH_INPUT_PLACEHOLDER")}
+      placeholder={t("SEARCH_INPUT_PLACEHOLDER")}
     />
   );
 };
