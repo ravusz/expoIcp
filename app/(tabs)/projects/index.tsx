@@ -13,9 +13,11 @@ import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 import { filterProjects } from "@/utils";
 import type { ProjectResponse } from "@/projectsApi/api";
+import { useRouter } from "expo-router";
 
 const ProjectsScreen = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const { data, isError, isLoading, refetch } = useFetchAllProjects();
   const [search, setSearch] = useState<string | undefined>();
@@ -48,7 +50,9 @@ const ProjectsScreen = () => {
           empty: (
             <EmptyList
               button={
-                <Button onPress={() => {}}>{t("project.addNewProject")}</Button>
+                <Button onPress={() => router.navigate(`projects/addProject`)}>
+                  {t("project.addNewProject")}
+                </Button>
               }
               title="project.emptyList.TITLE"
               description="project.emptyList.DESCRIPTON"
