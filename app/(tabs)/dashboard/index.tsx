@@ -11,6 +11,7 @@ import IconButton from "@/components/iconButton";
 import { theme } from "@/theme";
 import type { ProjectStatisticsResponse } from "./api/api";
 import { useTranslation } from "react-i18next";
+import { useInvalidateQueries } from "./hooks/useInvalidateQueries";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -52,6 +53,8 @@ export default function Dashboard() {
     () => (selectedProject ? mapTasksToChartData(selectedProject.tasks) : []),
     [selectedProject, mapTasksToChartData],
   );
+
+  useInvalidateQueries();
 
   return (
     <ScreenContainer>
