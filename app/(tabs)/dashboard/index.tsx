@@ -12,6 +12,7 @@ import { theme } from "@/theme";
 import type { ProjectStatisticsResponse } from "./api/api";
 import { useTranslation } from "react-i18next";
 import { useInvalidateQueries } from "./hooks/useInvalidateQueries";
+import { statisticsKeys } from "./api/queryKeys";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -54,7 +55,7 @@ export default function Dashboard() {
     [selectedProject, mapTasksToChartData],
   );
 
-  useInvalidateQueries();
+  useInvalidateQueries([...statisticsKeys.allCounts()]);
 
   return (
     <ScreenContainer>

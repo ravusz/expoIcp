@@ -8,7 +8,6 @@ export const useFetchProjectStatistics = (search: string | undefined) => {
     queryKey: statisticsKeys.byProjectSearch(search!),
     queryFn: () => fetchProjectStatistics(search!),
     enabled: !!search,
-    staleTime: 0,
-    gcTime: 0,
+    staleTime: Infinity,
   });
 };

@@ -10,6 +10,8 @@ import { useFetchProjectStatistics } from "../../api/queries/useFetchProjectStat
 import Button from "@/components/button";
 import type { ProjectStatisticsResponse } from "../../api/api";
 import ProjectsSearchList from "./projectsSearchList";
+import { useInvalidateQueries } from "../../hooks/useInvalidateQueries";
+import { statisticsKeys } from "../../api/queryKeys";
 
 import { theme } from "@/theme";
 
@@ -21,12 +23,10 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
   ({ onSelectProject }, ref) => {
     const { t } = useTranslation();
 
-    const [search, setSearch] = useState<string | undefined>();
+    const [search, setSearch] = useState<string>("");
 
-    const { data, isLoading, isError, refetch, ...rest } =
+    const { data, isLoading, isError, refetch } =
       useFetchProjectStatistics(search);
-
-    console.log("data", data);
 
     const getState = () => {
       if (isLoading) return "loading";
@@ -36,6 +36,8 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
     };
 
     const state = getState();
+
+    useInvalidateQueries([...statisticsKeys.byProjectSearch(search)]);
 
     return (
       <BottomSheet
