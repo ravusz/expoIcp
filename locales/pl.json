@@ -101,5 +101,11 @@
       "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowe zadanie",
       "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj zadanie"
     }
+  },
+  "statistics": {
+    "PROJECTS_TOTAL_COUNT": "Wszystkich projektów:",
+    "TASKS_TOTAL_COUNT": "Wszystkich zadań:",
+    "NO_DATA": "Brak danych",
+    "DATA_ERROR": "Wystąpił błąd podczas pobierania danych. Spróbuj ponownie później"
   }
 }

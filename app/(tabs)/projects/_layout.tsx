@@ -4,7 +4,10 @@ import { translate } from "@/i18n";
 export default function ProjectsLayout() {
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ title: "Projects" }} />
+      <Stack.Screen
+        name="index"
+        options={{ title: translate("routing.PROJECTS") }}
+      />
       <Stack.Screen
         name="addProject/index"
         options={{

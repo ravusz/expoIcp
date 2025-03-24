@@ -6,9 +6,11 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 export default function TabLayout() {
   return (
     <Tabs>
+      <Tabs.Screen name="index" options={{ href: null }} />
       <Tabs.Screen
-        name="index"
+        name="dashboard"
         options={{
+          headerShown: false,
           title: translate("routing.DASHBOARD"),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons

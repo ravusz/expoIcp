@@ -1,10 +1,5 @@
-import { Text } from "react-native";
-import ScreenContainer from "@/components/screenContainer";
+import { Redirect } from "expo-router";
 
-export default function Home() {
-  return (
-    <ScreenContainer>
-      <Text>Home</Text>
-    </ScreenContainer>
-  );
+export default function Index() {
+  return <Redirect href="/dashboard" />;
 }
