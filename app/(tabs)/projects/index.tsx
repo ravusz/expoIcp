@@ -50,7 +50,7 @@ const ProjectsScreen = () => {
           empty: (
             <EmptyList
               button={
-                <Button onPress={() => router.navigate(`projects/addProject`)}>
+                <Button onPress={() => router.navigate("projects/addProject")}>
                   {t("project.addNewProject")}
                 </Button>
               }
