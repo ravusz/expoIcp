@@ -12,13 +12,13 @@ export const useCreateNewTask = (projectId: string) => {
 
   return useMutation({
     mutationFn: (data: Task) => createNewTask(projectId, data),
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("task.addTaskSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [taskKeys.byProject(projectId)],
       });
     },

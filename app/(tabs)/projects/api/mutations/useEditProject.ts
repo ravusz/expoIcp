@@ -13,13 +13,13 @@ export const useEditProject = () => {
   return useMutation({
     mutationFn: ({ projectId, data }: { projectId: string; data: Project }) =>
       editProject(projectId, data),
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("project.editProjectSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [projectKeys.all],
       });
     },

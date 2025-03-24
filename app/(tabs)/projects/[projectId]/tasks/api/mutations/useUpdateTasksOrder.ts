@@ -13,13 +13,13 @@ export const useUpdateTasksOrder = (projectId: string) => {
   return useMutation({
     mutationFn: ({ ids, status }: { ids: string[]; status: TaskStatus }) =>
       updateTasksOrder(ids, status),
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("task.updateTaskOrderSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [taskKeys.byProject(projectId)],
       });
     },

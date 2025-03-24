@@ -20,13 +20,13 @@ export const useEditTask = () => {
       taskId: string;
       data: Task;
     }) => editTask(projectId, taskId, data),
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("task.editTaskSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [taskKeys.all],
       });
     },

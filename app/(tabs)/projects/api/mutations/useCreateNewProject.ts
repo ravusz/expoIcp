@@ -11,13 +11,13 @@ export const useCreateNewProject = () => {
 
   return useMutation({
     mutationFn: createNewProject,
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("project.addProjectSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [projectKeys.all],
       });
     },

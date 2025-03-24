@@ -11,13 +11,13 @@ export const useDeleteTask = (projectId: string) => {
 
   return useMutation({
     mutationFn: (taskId: string) => deleteTask(projectId, taskId),
-    onSuccess: async () => {
+    onSuccess: () => {
       Toast.show({
         type: "success",
         text1: t("task.deleteTaskSuccessMessage"),
       });
 
-      await queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: [taskKeys.byProject(projectId)],
       });
     },
