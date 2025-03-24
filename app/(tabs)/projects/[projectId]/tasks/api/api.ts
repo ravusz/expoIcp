@@ -82,9 +82,9 @@ export const editTask = async (
   const updatedTasks = currentTasks.map((task: TaskResponse) =>
     task.id === taskId
       ? {
-        ...task,
-        ...data,
-      }
+          ...task,
+          ...data,
+        }
       : task,
   );
 
@@ -116,10 +116,10 @@ export const updateTaskStatus = async (taskId: string, status: TaskStatus) => {
   const updatedTasks = currentTasks.map((task: TaskResponse) =>
     task.id === taskId
       ? {
-        ...task,
-        status,
-        order: currentTasks.filter((task) => task.status === status).length,
-      }
+          ...task,
+          status,
+          order: currentTasks.filter((task) => task.status === status).length,
+        }
       : task,
   );
 

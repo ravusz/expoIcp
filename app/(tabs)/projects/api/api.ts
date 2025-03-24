@@ -55,9 +55,9 @@ export const editProject = async (projectId: string, data: Project) => {
   const updatedProjects = currentProjects.map((project: ProjectResponse) =>
     project.id === projectId
       ? {
-        ...project,
-        ...data,
-      }
+          ...project,
+          ...data,
+        }
       : project,
   );
 

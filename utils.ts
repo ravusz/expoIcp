@@ -11,10 +11,10 @@ export const filterProjects = <T extends SearchData>(
 
   return search
     ? data.filter(
-      ({ name, description }) =>
-        name.toLowerCase().includes(search.toLowerCase()) ||
+        ({ name, description }) =>
+          name.toLowerCase().includes(search.toLowerCase()) ||
           description.toLowerCase().includes(search.toLowerCase()),
-    )
+      )
     : [...data];
 };
 
