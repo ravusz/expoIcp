@@ -39,6 +39,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
         index={-1}
         snapPoints={["100%"]}
         enablePanDownToClose
+        enableDynamicSizing={false}
       >
         <View style={styles.contentContainer}>
           <SearchInput
