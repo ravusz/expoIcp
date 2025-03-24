@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useBottomSheet } from "@gorhom/bottom-sheet";
 
 import ListCardItem from "@/components/list/listCardItem";
 import type { ProjectStatisticsResponse } from "../../../api/api";
+import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 
 type Props = {
   data: ProjectStatisticsResponse[];
@@ -15,7 +16,7 @@ const ProjectsSearchList = ({ data, onSelectProject }: Props) => {
 
   return (
     <View style={styles.dataContainer}>
-      <FlatList
+      <BottomSheetFlatList
         data={data}
         renderItem={({ item }) => (
           <ListCardItem

@@ -2,7 +2,7 @@ import { forwardRef, useState } from "react";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { translate } from "@/i18n";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
 import SearchInput from "@/components/searchInput";
@@ -40,7 +40,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
         snapPoints={["100%"]}
         enablePanDownToClose
       >
-        <BottomSheetView style={styles.contentContainer}>
+        <View style={styles.contentContainer}>
           <SearchInput
             placeholder="SEARCH_INPUT_PLACEHOLDER"
             value={search}
@@ -73,7 +73,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
               ),
             }[state]
           }
-        </BottomSheetView>
+        </View>
       </BottomSheet>
     );
   },
