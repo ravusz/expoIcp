@@ -4,3 +4,8 @@ export const TASK_STATUSES = {
   IN_REVIEW: "IN_REVIEW",
   DONE: "DONE",
 } as const;
+
+export const LOCALES = {
+  EN: "en",
+  PL: "pl",
+} as const;

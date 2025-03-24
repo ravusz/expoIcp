@@ -1,112 +1,118 @@
 {
-  "SEARCH_INPUT_PLACEHOLDER": "Wyszukaj...",
+  "settings": {
+    "SELECT_LAGUAGE": "Select language",
+    "PL": "Polish",
+    "EN": "English"
+  },
+  "SEARCH_INPUT_PLACEHOLDER": "Search...",
   "taskStatuses": {
-    "TO_DO": "Do zrobienia",
-    "IN_REVIEW": "W przeglądzie",
-    "IN_PROGRESS": "W trakcie",
-    "DONE": "Zrobione"
+    "TO_DO": "To Do",
+    "IN_REVIEW": "In Review",
+    "IN_PROGRESS": "In Progress",
+    "DONE": "Done"
   },
   "routing": {
     "DASHBOARD": "Dashboard",
-    "PROJECTS": "Projekty",
-    "ADD_PROJECT": "Dodaj projekt",
-    "EDIT_PROJECT": "Edytuj projekt",
-    "TASKS": "Zadania",
-    "ADD_TASK": "Dodaj zadanie",
-    "EDIT_TASK": "Edytuj zadanie"
+    "PROJECTS": "Projects",
+    "SETTINGS": "Settings",
+    "ADD_PROJECT": "Add Project",
+    "EDIT_PROJECT": "Edit Project",
+    "TASKS": "Tasks",
+    "ADD_TASK": "Add Task",
+    "EDIT_TASK": "Edit Task"
   },
   "errorScreen": {
-    "TITLE": "Ups! Coś poszło nie tak.",
-    "DESCRIPTION": "Napotkaliśmy niespodziewany błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie później.",
-    "REFRESH": "Odśwież"
+    "TITLE": "Oops! Something went wrong.",
+    "DESCRIPTION": "We encountered an unexpected error while processing your request. Please try again later.",
+    "REFRESH": "Refresh"
   },
   "project": {
     "deleteConfirmation": {
-      "TITLE": "Usuwanie",
-      "DESCRIPTION": "Czy na pewno chcesz usunąć ten projekt ?",
-      "CANCEL_BUTTON": "Anuluj",
-      "SUBMIT_BUTTON": "Potwierdz"
+      "TITLE": "Deleting",
+      "DESCRIPTION": "Are you sure you want to delete this project?",
+      "CANCEL_BUTTON": "Cancel",
+      "SUBMIT_BUTTON": "Confirm"
     },
-    "SEARCH_PLACEHOLDER": "Wyszukaj project...",
+    "SEARCH_PLACEHOLDER": "Search project...",
     "emptyList": {
-      "TITLE": "Brak projektów",
-      "DESCRIPTON": "Nie masz jeszcze żadnych projektów, dodaj pierwszy!"
+      "TITLE": "No Projects",
+      "DESCRIPTION": "You don't have any projects yet, add your first one!"
     },
-    "addNewProject": "Dodaj nowy projekt",
-    "addProjectSuccessMessage": "Projekt został pomyślnie utworzony!",
-    "addProjectErrorMessage": "Błąd podczas dodawania projektu",
-    "deleteProjectSuccessMessage": "Projekt został usunięty!",
-    "deleteProjectErrorMessage": "Błąd podczas usuwania projektu",
-    "editProjectSuccessMessage": "Projekt został pomyślnie edytowany!",
-    "editProjectErrorMessage": "Błąd podczas edytowania projektu",
+    "addNewProject": "Add New Project",
+    "addProjectSuccessMessage": "Project has been successfully created!",
+    "addProjectErrorMessage": "Error while adding project",
+    "deleteProjectSuccessMessage": "Project has been deleted!",
+    "deleteProjectErrorMessage": "Error while deleting project",
+    "editProjectSuccessMessage": "Project has been successfully edited!",
+    "editProjectErrorMessage": "Error while editing project",
     "projectForm": {
       "nameField": {
-        "LABEL": "Nazwa projektu",
-        "PLACEHOLDER": "Wprowadz nazwę projektu...",
+        "LABEL": "Project Name",
+        "PLACEHOLDER": "Enter project name...",
         "validation": {
-          "REQUIRED": "Musisz podać nazwę projektu"
+          "REQUIRED": "You must provide a project name"
         }
       },
       "descriptionField": {
-        "LABEL": "Opis projektu",
-        "PLACEHOLDER": "Wprowadz opis projektu...",
+        "LABEL": "Project Description",
+        "PLACEHOLDER": "Enter project description...",
         "validation": {
-          "REQUIRED": "Musisz podać opis projektu"
+          "REQUIRED": "You must provide a project description"
         }
       },
-      "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowy projekt",
-      "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj projekt"
+      "ADD_SUBMIT_BUTTON_LABEL": "Add New Project",
+      "EDIT_SUBMIT_BUTTON_LABEL": "Edit Project"
     }
   },
   "task": {
-    "CHANGE_TASK_STATUS": "Zmień status zadania",
-    "EMPTY_TASKS_LIST": "Brak zadań",
+    "CHANGE_TASK_STATUS": "Change task status",
+    "EMPTY_TASKS_LIST": "No tasks",
     "deleteConfirmation": {
-      "TITLE": "Usuwanie",
-      "DESCRIPTION": "Czy na pewno chcesz usunąć to zadanie?",
-      "CANCEL_BUTTON": "Anuluj",
-      "SUBMIT_BUTTON": "Potwierdź"
+      "TITLE": "Deleting",
+      "DESCRIPTION": "Are you sure you want to delete this task?",
+      "CANCEL_BUTTON": "Cancel",
+      "SUBMIT_BUTTON": "Confirm"
     },
-    "SEARCH_PLACEHOLDER": "Wyszukaj zadanie...",
+    "SEARCH_PLACEHOLDER": "Search task...",
     "emptyList": {
-      "TITLE": "Brak zadań",
-      "DESCRIPTION": "Nie masz jeszcze żadnych zadań, dodaj pierwsze!"
+      "TITLE": "No Tasks",
+      "DESCRIPTION": "You don't have any tasks yet, add your first one!"
     },
-    "addNewTask": "Dodaj nowe zadanie",
-    "addTaskSuccessMessage": "Zadanie zostało pomyślnie utworzone!",
-    "addTaskErrorMessage": "Błąd podczas dodawania zadania",
-    "deleteTaskSuccessMessage": "Zadanie zostało usunięte!",
-    "deleteTaskErrorMessage": "Błąd podczas usuwania zadania",
-    "editTaskSuccessMessage": "Zadanie zostało pomyślnie edytowane!",
-    "editTaskErrorMessage": "Błąd podczas edytowania zadania",
-    "editTaskStatusSuccessMessage": "Status zadania został pomyślnie edytowany!",
-    "editTaskStatusErrorMessage": "Błąd podczas edytowania statusu zadania",
-    "updateTaskOrderSuccessMessage": "Kolejność zadań została zmieniona!",
-    "updateTaskOrderErrorMessage": "Błąd podczas zmiany kolejności zadań!",
+    "addNewTask": "Add New Task",
+    "addTaskSuccessMessage": "Task has been successfully created!",
+    "addTaskErrorMessage": "Error while adding task",
+    "deleteTaskSuccessMessage": "Task has been deleted!",
+    "deleteTaskErrorMessage": "Error while deleting task",
+    "editTaskSuccessMessage": "Task has been successfully edited!",
+    "editTaskErrorMessage": "Error while editing task",
+    "editTaskStatusSuccessMessage": "Task status has been successfully edited!",
+    "editTaskStatusErrorMessage": "Error while editing task status",
+    "updateTaskOrderSuccessMessage": "Task order has been changed!",
+    "updateTaskOrderErrorMessage": "Error while changing task order!",
     "taskForm": {
       "nameField": {
-        "LABEL": "Nazwa zadania",
-        "PLACEHOLDER": "Wprowadź nazwę zadania...",
+        "LABEL": "Task Name",
+        "PLACEHOLDER": "Enter task name...",
         "validation": {
-          "REQUIRED": "Musisz podać nazwę zadania"
+          "REQUIRED": "You must provide a task name"
         }
       },
       "descriptionField": {
-        "LABEL": "Opis zadania",
-        "PLACEHOLDER": "Wprowadź opis zadania...",
+        "LABEL": "Task Description",
+        "PLACEHOLDER": "Enter task description...",
         "validation": {
-          "REQUIRED": "Musisz podać opis zadania"
+          "REQUIRED": "You must provide a task description"
         }
       },
-      "ADD_SUBMIT_BUTTON_LABEL": "Dodaj nowe zadanie",
-      "EDIT_SUBMIT_BUTTON_LABEL": "Edytuj zadanie"
+      "ADD_SUBMIT_BUTTON_LABEL": "Add New Task",
+      "EDIT_SUBMIT_BUTTON_LABEL": "Edit Task"
     }
   },
   "statistics": {
-    "SELECT_PROJECT": "Wybierz projekt",
-    "PROJECTS_TOTAL_COUNT": "Wszystkich projektów:",
-    "TASKS_TOTAL_COUNT": "Wszystkich zadań:",
-    "NO_DATA": "Brak danych",
-    "DATA_ERROR": "Wystąpił błąd podczas pobierania danych. Spróbuj ponownie później"
+    "SELECT_PROJECT": "Select Project",
+    "PROJECTS_TOTAL_COUNT": "Total Projects:",
+    "TASKS_TOTAL_COUNT": "Total Tasks:",
+    "NO_DATA": "No data",
+    "DATA_ERROR": "Error occurred while fetching data. Please try again later"
   }
 }

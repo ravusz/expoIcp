@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "SELECT_LAGUAGE": "Wybierz język",
+    "PL": "Polski",
+    "EN": "Angielski"
+  },
   "SEARCH_INPUT_PLACEHOLDER": "Wyszukaj...",
   "taskStatuses": {
     "TO_DO": "Do zrobienia",
@@ -9,6 +14,7 @@
   "routing": {
     "DASHBOARD": "Dashboard",
     "PROJECTS": "Projekty",
+    "SETTINGS": "Ustawienia",
     "ADD_PROJECT": "Dodaj projekt",
     "EDIT_PROJECT": "Edytuj projekt",
     "TASKS": "Zadania",

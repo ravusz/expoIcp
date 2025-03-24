@@ -35,6 +35,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          headerShown: false,
+          title: translate("routing.SETTINGS"),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cogs" size={24} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
