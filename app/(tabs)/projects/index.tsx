@@ -11,19 +11,14 @@ import ScreenLoader from "@/components/screenLoader";
 import Button from "@/components/button";
 import { translate } from "@/i18n";
 import { theme } from "@/theme";
+import { filterProjects } from "@/utils";
+import type { ProjectResponse } from "@/projectsApi/api";
 
 const ProjectsScreen = () => {
   const { data, isError, isLoading, refetch } = useFetchAllProjects();
   const [search, setSearch] = useState<string | undefined>();
 
-  const filteredData =
-    (search
-      ? data?.filter(
-          ({ name, description }) =>
-            name.toLowerCase().includes(search.toLowerCase()) ||
-            description.toLowerCase().includes(search.toLowerCase()),
-        )
-      : data) || [];
+  const filteredData = filterProjects<ProjectResponse>(search, data);
 
   const getState = () => {
     if (isLoading) return "loading";

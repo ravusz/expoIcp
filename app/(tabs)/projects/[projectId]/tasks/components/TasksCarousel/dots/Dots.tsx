@@ -1,4 +1,4 @@
-import { TASK_STATUSES } from "../../../constants";
+import { TASK_STATUSES } from "@/constants";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 

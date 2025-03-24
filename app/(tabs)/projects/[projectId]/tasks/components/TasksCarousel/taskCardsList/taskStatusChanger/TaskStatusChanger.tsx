@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useBottomSheet } from "@gorhom/bottom-sheet";
-import { TASK_STATUSES } from "@/tasks/constants";
+import { TASK_STATUSES } from "@/constants";
 import { useUpdateTaskStatus } from "@/tasksApi/mutations/useUpdateTaskStatus";
 import { TaskStatus } from "@/tasksApi/api";
 import Label from "@/components/form/label";

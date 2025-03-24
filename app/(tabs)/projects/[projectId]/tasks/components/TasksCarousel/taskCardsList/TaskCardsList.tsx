@@ -6,7 +6,7 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 import ActionsBottomSheet from "./actionsBottomSheet";
 import TaskCard from "./taskCard";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { TASK_STATUSES } from "../../../constants";
+import { TASK_STATUSES } from "@/constants";
 import AddTaskButton from "../../addTaskButton";
 import { theme } from "@/theme";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";

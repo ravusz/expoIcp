@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import uuid from "react-native-uuid";
 import { PROJECTS_KEY } from "@/app/(tabs)/projects/api/api";
 import type { ProjectResponse } from "@/app/(tabs)/projects/api/api";
-import { TASK_STATUSES } from "../constants";
+import { TASK_STATUSES } from "@/constants";
 
 export type TaskStatus = keyof typeof TASK_STATUSES;
 
