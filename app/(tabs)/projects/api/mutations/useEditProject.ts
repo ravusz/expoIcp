@@ -20,7 +20,7 @@ export const useEditProject = () => {
       });
 
       queryClient.invalidateQueries({
-        queryKey: [projectKeys.all],
+        queryKey: projectKeys.all,
       });
     },
     onError: () => {

@@ -10,7 +10,7 @@ export const useInvalidateQueries = () => {
   useFocusEffect(
     useCallback(() => {
       queryClient.invalidateQueries({
-        queryKey: [statisticsKeys.allCounts()],
+        queryKey: statisticsKeys.allCounts(),
       });
     }, [queryClient]),
   );

@@ -5,7 +5,7 @@ import { taskKeys } from "../queryKeys";
 
 export const useFetchAllProjectTasks = (projectId: string) => {
   return useQuery<TaskResponse[]>({
-    queryKey: [taskKeys.byProject(projectId)],
+    queryKey: taskKeys.byProject(projectId),
     queryFn: () => fetchAllProjectTasks(projectId),
   });
 };

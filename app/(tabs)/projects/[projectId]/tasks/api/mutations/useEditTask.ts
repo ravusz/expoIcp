@@ -27,7 +27,7 @@ export const useEditTask = () => {
       });
 
       queryClient.invalidateQueries({
-        queryKey: [taskKeys.all],
+        queryKey: taskKeys.all,
       });
     },
     onError: () => {

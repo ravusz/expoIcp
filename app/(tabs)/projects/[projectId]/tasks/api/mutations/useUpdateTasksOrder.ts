@@ -20,7 +20,7 @@ export const useUpdateTasksOrder = (projectId: string) => {
       });
 
       queryClient.invalidateQueries({
-        queryKey: [taskKeys.byProject(projectId)],
+        queryKey: taskKeys.byProject(projectId),
       });
     },
     onError: () => {

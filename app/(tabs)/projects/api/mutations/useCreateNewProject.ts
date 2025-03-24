@@ -18,7 +18,7 @@ export const useCreateNewProject = () => {
       });
 
       queryClient.invalidateQueries({
-        queryKey: [projectKeys.all],
+        queryKey: projectKeys.all,
       });
     },
     onError: () => {

@@ -5,7 +5,7 @@ import { statisticsKeys } from "../queryKeys";
 
 export const useFetchStatistics = () => {
   return useQuery<TotalStatistics>({
-    queryKey: [statisticsKeys.allCounts()],
+    queryKey: statisticsKeys.allCounts(),
     queryFn: fetchTotalStatistics,
   });
 };

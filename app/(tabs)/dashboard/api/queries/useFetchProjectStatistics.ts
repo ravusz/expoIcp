@@ -5,10 +5,10 @@ import type { ProjectStatisticsResponse } from "../api";
 
 export const useFetchProjectStatistics = (search: string | undefined) => {
   return useQuery<ProjectStatisticsResponse[]>({
-    queryKey: [statisticsKeys.byProjectSearch(search!)],
+    queryKey: statisticsKeys.byProjectSearch(search!),
     queryFn: () => fetchProjectStatistics(search!),
     enabled: !!search,
     staleTime: 0,
-    gcTime: 10 * 1000, // 10s
+    gcTime: 0,
   });
 };

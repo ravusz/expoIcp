@@ -5,7 +5,7 @@ import { projectKeys } from "../queryKeys";
 
 export const useFetchProjectById = (projectId: string) => {
   return useQuery<ProjectResponse>({
-    queryKey: [projectKeys.byId(projectId)],
+    queryKey: projectKeys.byId(projectId),
     queryFn: () => fetchProjectById({ projectId }),
   });
 };

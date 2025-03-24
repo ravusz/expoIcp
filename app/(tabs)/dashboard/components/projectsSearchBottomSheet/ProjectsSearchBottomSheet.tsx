@@ -26,7 +26,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
     const { data, isLoading, isError, refetch, ...rest } =
       useFetchProjectStatistics(search);
 
-    console.log("rest", rest);
+    console.log("data", data);
 
     const getState = () => {
       if (isLoading) return "loading";
