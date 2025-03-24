@@ -16,6 +16,13 @@ export type ProjectResponse = {
   tasks: string[];
 };
 
+export type ProjectStatisticsResponse = {
+  id: string;
+  name: string;
+  description: string;
+  tasks: { [K in keyof typeof TASK_STATUSES]: number };
+};
+
 const PROJECTS_KEY = "projects";
 const TASKS_KEY = "tasks";
 
@@ -34,7 +41,9 @@ export const fetchTotalStatistics = async () => {
   };
 };
 
-export const fetchProjectStatistics = async (search: string): Promise<any> => {
+export const fetchProjectStatistics = async (
+  search: string,
+): Promise<ProjectStatisticsResponse[]> => {
   const storedProjects = await AsyncStorage.getItem(PROJECTS_KEY);
   const storedTasks = await AsyncStorage.getItem(TASKS_KEY);
 

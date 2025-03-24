@@ -13,7 +13,7 @@ export const filterProjects = <T extends SearchData>(
     ? data.filter(
       ({ name, description }) =>
         name.toLowerCase().includes(search.toLowerCase()) ||
-        description.toLowerCase().includes(search.toLowerCase()),
+          description.toLowerCase().includes(search.toLowerCase()),
     )
     : [...data];
 };

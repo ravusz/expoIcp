@@ -9,7 +9,7 @@ type Props = PressableProps & {
   order?: number;
   title: string;
   description: string;
-  isActive: boolean;
+  isActive?: boolean;
   children?: React.ReactNode;
 };
 

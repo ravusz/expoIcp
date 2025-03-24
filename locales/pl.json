@@ -103,6 +103,7 @@
     }
   },
   "statistics": {
+    "SELECT_PROJECT": "Wybierz projekt",
     "PROJECTS_TOTAL_COUNT": "Wszystkich projektów:",
     "TASKS_TOTAL_COUNT": "Wszystkich zadań:",
     "NO_DATA": "Brak danych",

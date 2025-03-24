@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
 import React from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { translate } from "@/i18n";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import ScreenLoader from "@/components/screenLoader";
@@ -8,15 +8,17 @@ import ErrorScreen from "@/components/errorScreen";
 import SearchInput from "@/components/searchInput";
 import { useFetchProjectStatistics } from "../../api/queries/useFetchProjectStatistics";
 import Button from "@/components/button";
+import type { ProjectStatisticsResponse } from "../../api/api";
+import ProjectsSearchList from "./projectsSearchList";
 
 import { theme } from "@/theme";
 
 type Props = {
-  projectId?: string;
+  onSelectProject: (task: ProjectStatisticsResponse) => void;
 };
 
 const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
-  ({ projectId }: Props, ref) => {
+  ({ onSelectProject }, ref) => {
     const [search, setSearch] = useState<string | undefined>();
 
     const { data, isLoading, isError, refetch } =
@@ -58,12 +60,10 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
               ),
               empty: <Text style={styles.emptyText}>No data</Text>,
               data: (
-                <View style={styles.dataContainer}>
-                  <FlatList
-                    data={data}
-                    renderItem={({ item }) => <Text>{item.name}</Text>}
-                  />
-                </View>
+                <ProjectsSearchList
+                  data={data!}
+                  onSelectProject={onSelectProject}
+                />
               ),
             }[state]
           }
