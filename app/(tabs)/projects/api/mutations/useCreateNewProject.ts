@@ -1,10 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Toast from "react-native-toast-message";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { createNewProject } from "../api";
 import { projectKeys } from "../queryKeys";
 
 export const useCreateNewProject = () => {
+  const { t } = useTranslation();
+
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -12,7 +14,7 @@ export const useCreateNewProject = () => {
     onSuccess: async () => {
       Toast.show({
         type: "success",
-        text1: translate("project.addProjectSuccessMessage"),
+        text1: t("project.addProjectSuccessMessage"),
       });
 
       await queryClient.invalidateQueries({
@@ -22,7 +24,7 @@ export const useCreateNewProject = () => {
     onError: () => {
       Toast.show({
         type: "error",
-        text1: translate("project.addProjectErrorMessage"),
+        text1: t("project.addProjectErrorMessage"),
       });
     },
   });

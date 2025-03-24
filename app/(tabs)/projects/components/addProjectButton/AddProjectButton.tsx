@@ -1,12 +1,14 @@
 import React from "react";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 import LinkButton from "@/components/linkButton";
 
 const AddProjectButton = () => {
+  const { t } = useTranslation();
+
   return (
     <LinkButton href="/projects/addProject" iconName="add">
-      {translate("project.addNewProject")}
+      {t("project.addNewProject")}
     </LinkButton>
   );
 };

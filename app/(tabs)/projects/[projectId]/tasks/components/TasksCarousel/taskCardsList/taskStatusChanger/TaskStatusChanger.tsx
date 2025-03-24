@@ -5,7 +5,7 @@ import { TASK_STATUSES } from "@/constants";
 import { useUpdateTaskStatus } from "@/tasksApi/mutations/useUpdateTaskStatus";
 import { TaskStatus } from "@/tasksApi/api";
 import Label from "@/components/form/label";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -31,6 +31,8 @@ const getButtonIcon = (status: TaskStatus) => {
 };
 
 const TaskStatusChanger = ({ projectId, taskId, status }: Props) => {
+  const { t } = useTranslation();
+
   const { close } = useBottomSheet();
   const { mutate, isPending } = useUpdateTaskStatus(projectId);
 
@@ -50,7 +52,7 @@ const TaskStatusChanger = ({ projectId, taskId, status }: Props) => {
 
   return (
     <View>
-      <Label>{translate("task.CHANGE_TASK_STATUS")}</Label>
+      <Label>{t("task.CHANGE_TASK_STATUS")}</Label>
       <View style={styles.buttonsContainer}>
         {Object.values(TASK_STATUSES)
           .filter((item) => {
@@ -75,7 +77,7 @@ const TaskStatusChanger = ({ projectId, taskId, status }: Props) => {
                   style={styles.icon}
                 />
                 <Text style={styles.buttonText}>
-                  {translate(`taskStatuses.${item}`)}
+                  {t(`taskStatuses.${item}`)}
                 </Text>
               </TouchableOpacity>
             );

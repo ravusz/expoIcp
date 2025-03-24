@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import BottomSheet from "@gorhom/bottom-sheet";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
@@ -19,6 +19,8 @@ type Props = {
 
 const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
   ({ onSelectProject }, ref) => {
+    const { t } = useTranslation();
+
     const [search, setSearch] = useState<string | undefined>();
 
     const { data, isLoading, isError, refetch } =
@@ -54,7 +56,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
                 <ErrorScreen
                   button={
                     <Button onPress={() => refetch()}>
-                      {translate("errorScreen.REFRESH")}
+                      {t("errorScreen.REFRESH")}
                     </Button>
                   }
                 />
@@ -62,7 +64,7 @@ const ProjectsSearchBottomSheet = forwardRef<BottomSheet, Props>(
               empty: (
                 <View style={{ marginTop: theme.margin.xl }}>
                   <Text style={styles.emptyText}>
-                    {translate("statistics.NO_DATA")}
+                    {t("statistics.NO_DATA")}
                   </Text>
                 </View>
               ),

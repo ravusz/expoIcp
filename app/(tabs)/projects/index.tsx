@@ -9,12 +9,14 @@ import AddProjectButton from "./components/addProjectButton";
 import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
 import Button from "@/components/button";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 import { filterProjects } from "@/utils";
 import type { ProjectResponse } from "@/projectsApi/api";
 
 const ProjectsScreen = () => {
+  const { t } = useTranslation();
+
   const { data, isError, isLoading, refetch } = useFetchAllProjects();
   const [search, setSearch] = useState<string | undefined>();
 
@@ -38,7 +40,7 @@ const ProjectsScreen = () => {
             <ErrorScreen
               button={
                 <Button onPress={() => refetch()}>
-                  {translate("errorScreen.REFRESH")}
+                  {t("errorScreen.REFRESH")}
                 </Button>
               }
             />
@@ -46,9 +48,7 @@ const ProjectsScreen = () => {
           empty: (
             <EmptyList
               button={
-                <Button onPress={() => {}}>
-                  {translate("project.addNewProject")}
-                </Button>
+                <Button onPress={() => {}}>{t("project.addNewProject")}</Button>
               }
               title="project.emptyList.TITLE"
               description="project.emptyList.DESCRIPTON"

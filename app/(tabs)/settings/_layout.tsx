@@ -1,13 +1,12 @@
 import { Stack } from "expo-router";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 export default function SettingsLayout() {
+  const { t } = useTranslation();
+
   return (
     <Stack>
-      <Stack.Screen
-        name="index"
-        options={{ title: translate("routing.SETTINGS") }}
-      />
+      <Stack.Screen name="index" options={{ title: t("routing.SETTINGS") }} />
     </Stack>
   );
 }

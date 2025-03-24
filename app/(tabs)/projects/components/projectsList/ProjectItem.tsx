@@ -4,7 +4,7 @@ import type { ProjectResponse } from "@/app/(tabs)/projects/api/api";
 import { theme } from "@/theme";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { useDeleteProject } from "@/app/(tabs)/projects/api/mutations/useDeleteProject";
 import IconButton from "@/components/iconButton";
 import { useRouter } from "expo-router";
@@ -15,20 +15,22 @@ const ProjectItem = ({
   name,
   description,
 }: Omit<ProjectResponse, "tasks">) => {
+  const { t } = useTranslation();
+
   const { mutate, isPending } = useDeleteProject();
   const router = useRouter();
 
   const onDelete = () => {
     Alert.alert(
-      translate("project.deleteConfirmation.TITLE"),
-      translate("project.deleteConfirmation.DESCRIPTION"),
+      t("project.deleteConfirmation.TITLE"),
+      t("project.deleteConfirmation.DESCRIPTION"),
       [
         {
-          text: translate("project.deleteConfirmation.CANCEL_BUTTON"),
+          text: t("project.deleteConfirmation.CANCEL_BUTTON"),
           style: "cancel",
         },
         {
-          text: translate("project.deleteConfirmation.SUBMIT_BUTTON"),
+          text: t("project.deleteConfirmation.SUBMIT_BUTTON"),
           onPress: () => mutate(id),
         },
       ],

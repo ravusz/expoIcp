@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useCallback } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -10,40 +10,47 @@ import Button from "@/components/button";
 import IconButton from "@/components/iconButton";
 import { theme } from "@/theme";
 import type { ProjectStatisticsResponse } from "./api/api";
-import { translate } from "@/i18n";
-
-const mapTasksToChartData = (tasks: ProjectStatisticsResponse["tasks"]) => [
-  {
-    name: translate("taskStatuses.TO_DO"),
-    value: tasks.TO_DO,
-    color: "#f39c12",
-  },
-  {
-    name: translate("taskStatuses.IN_PROGRESS"),
-    value: tasks.IN_PROGRESS,
-    color: "#3498db",
-  },
-  {
-    name: translate("taskStatuses.IN_REVIEW"),
-    value: tasks.IN_REVIEW,
-    color: "#9b59b6",
-  },
-  {
-    name: translate("taskStatuses.DONE"),
-    value: tasks.DONE,
-    color: "#2ecc71",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
+  const { t } = useTranslation();
+
   const projectsSearchBottomSheetRef = useRef<BottomSheet>(null);
   const [selectedProject, onSelectProject] = useState<
     ProjectStatisticsResponse | undefined
   >(undefined);
 
+  const mapTasksToChartData = useCallback(
+    (tasks: ProjectStatisticsResponse["tasks"]) => {
+      return [
+        {
+          name: t("taskStatuses.TO_DO"),
+          value: tasks.TO_DO,
+          color: "#f39c12",
+        },
+        {
+          name: t("taskStatuses.IN_PROGRESS"),
+          value: tasks.IN_PROGRESS,
+          color: "#3498db",
+        },
+        {
+          name: t("taskStatuses.IN_REVIEW"),
+          value: tasks.IN_REVIEW,
+          color: "#9b59b6",
+        },
+        {
+          name: t("taskStatuses.DONE"),
+          value: tasks.DONE,
+          color: "#2ecc71",
+        },
+      ];
+    },
+    [t],
+  );
+
   const chartData = useMemo(
     () => (selectedProject ? mapTasksToChartData(selectedProject.tasks) : []),
-    [selectedProject],
+    [selectedProject, mapTasksToChartData],
   );
 
   return (
@@ -84,7 +91,7 @@ export default function Dashboard() {
           <Button
             onPress={() => projectsSearchBottomSheetRef.current?.expand()}
           >
-            {translate("statistics.SELECT_PROJECT")}
+            {t("statistics.SELECT_PROJECT")}
           </Button>
         )}
 

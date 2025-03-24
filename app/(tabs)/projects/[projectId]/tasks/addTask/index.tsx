@@ -3,10 +3,12 @@ import ScreenContainer from "@/components/screenContainer";
 import { useCreateNewTask } from "../api/mutations/useCreateNewTask";
 import type { Task } from "../api/api";
 import { useRouter } from "expo-router";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { useLocalSearchParams } from "expo-router";
 
 const AddTaskScreen = () => {
+  const { t } = useTranslation();
+
   const { projectId }: { projectId: string } = useLocalSearchParams();
   const router = useRouter();
 
@@ -25,7 +27,7 @@ const AddTaskScreen = () => {
       <TaskForm
         onSubmit={onSubmit}
         isLoading={isPending}
-        submitText={translate(`task.taskForm.ADD_SUBMIT_BUTTON_LABEL`)}
+        submitText={t(`task.taskForm.ADD_SUBMIT_BUTTON_LABEL`)}
       />
     </ScreenContainer>
   );

@@ -1,11 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Toast from "react-native-toast-message";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { updateTaskStatus } from "../api";
 import { taskKeys } from "../queryKeys";
 import type { TaskStatus } from "../api";
 
 export const useUpdateTaskStatus = (projectId: string) => {
+  const { t } = useTranslation();
+
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -14,7 +16,7 @@ export const useUpdateTaskStatus = (projectId: string) => {
     onSuccess: async () => {
       Toast.show({
         type: "success",
-        text1: translate("task.editTaskStatusSuccessMessage"),
+        text1: t("task.editTaskStatusSuccessMessage"),
       });
 
       await queryClient.invalidateQueries({
@@ -24,7 +26,7 @@ export const useUpdateTaskStatus = (projectId: string) => {
     onError: () => {
       Toast.show({
         type: "error",
-        text1: translate("task.editTaskStatusErrorMessage"),
+        text1: t("task.editTaskStatusErrorMessage"),
       });
     },
   });

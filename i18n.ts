@@ -1,25 +1,48 @@
-import { I18n } from "i18n-js";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { getLocales } from "expo-localization";
 import en from "@/locales/en.json";
 import pl from "@/locales/pl.json";
 import { LOCALES } from "@/constants";
 
-export const deviceLanguage = getLocales()?.[0]?.languageCode ?? "en";
+const resources = {
+  [LOCALES.EN]: { translation: en },
+  [LOCALES.PL]: { translation: pl },
+};
 
-export const i18n = new I18n({
-  en,
-  pl,
-});
+const initI18n = async () => {
+  let savedLanguage = await AsyncStorage.getItem("language");
 
-i18n.defaultLocale = deviceLanguage;
+  if (!savedLanguage) {
+    savedLanguage = getLocales()?.[0]?.languageCode ?? "en";
+  }
 
-i18n.locale = deviceLanguage;
+  i18n.use(initReactI18next).init({
+    resources,
+    lng: savedLanguage,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+};
+
+initI18n();
 
 export const translate = (key: string) => i18n.t(key);
 
-export const changeLanguage = (languageCode: string) => {
-  if ([LOCALES.EN, LOCALES.PL].includes(languageCode as "en" | "pl")) {
-    i18n.locale = languageCode;
-    i18n.defaultLocale = languageCode;
+export const loadLanguage = async () => {
+  const savedLanguage = await AsyncStorage.getItem("language");
+  if (savedLanguage) {
+    i18n.changeLanguage(savedLanguage);
   }
 };
+
+export const changeLanguage = async (lang: string) => {
+  await AsyncStorage.setItem("language", lang);
+  i18n.changeLanguage(lang);
+};
+
+export default i18n;

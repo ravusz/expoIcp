@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import InputField from "@/components/form/inputField";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import type { ProjectResponse, Project } from "@/app/(tabs)/projects/api/api";
 import Button from "@/components/button";
 
@@ -20,6 +20,8 @@ const ProjectForm = ({
   submitText,
   onSubmit,
 }: Props) => {
+  const { t } = useTranslation();
+
   const {
     control,
     handleSubmit,
@@ -33,10 +35,8 @@ const ProjectForm = ({
         render={({ field: { onBlur, onChange, value, ref, name } }) => {
           return (
             <InputField
-              label={translate(`${I18N_TRANSLATION_PATH}.nameField.LABEL`)}
-              placeholder={translate(
-                `${I18N_TRANSLATION_PATH}.nameField.PLACEHOLDER`,
-              )}
+              label={t(`${I18N_TRANSLATION_PATH}.nameField.LABEL`)}
+              placeholder={t(`${I18N_TRANSLATION_PATH}.nameField.PLACEHOLDER`)}
               errorMessage={errors[name]?.message as string}
               value={value}
               onBlur={onBlur}
@@ -47,17 +47,15 @@ const ProjectForm = ({
         }}
         name="name"
         rules={{
-          required: translate(
-            `${I18N_TRANSLATION_PATH}.nameField.validation.REQUIRED`,
-          ),
+          required: t(`${I18N_TRANSLATION_PATH}.nameField.validation.REQUIRED`),
         }}
       />
       <Controller
         control={control}
         render={({ field: { onBlur, onChange, value, ref, name } }) => (
           <InputField
-            label={translate(`${I18N_TRANSLATION_PATH}.descriptionField.LABEL`)}
-            placeholder={translate(
+            label={t(`${I18N_TRANSLATION_PATH}.descriptionField.LABEL`)}
+            placeholder={t(
               `${I18N_TRANSLATION_PATH}.descriptionField.PLACEHOLDER`,
             )}
             errorMessage={errors[name]?.message as string}
@@ -70,7 +68,7 @@ const ProjectForm = ({
         )}
         name="description"
         rules={{
-          required: translate(
+          required: t(
             `${I18N_TRANSLATION_PATH}.descriptionField.validation.REQUIRED`,
           ),
         }}

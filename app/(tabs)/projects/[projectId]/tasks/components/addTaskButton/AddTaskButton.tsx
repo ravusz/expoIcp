@@ -2,14 +2,16 @@ import React from "react";
 import { useLocalSearchParams } from "expo-router";
 
 import LinkButton from "@/components/linkButton";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 const AddTaskButton = () => {
+  const { t } = useTranslation();
+
   const { projectId }: { projectId: string } = useLocalSearchParams();
 
   return (
     <LinkButton href={`projects/${projectId}/tasks/addTask`} iconName="add">
-      {translate("task.addNewTask")}
+      {t("task.addNewTask")}
     </LinkButton>
   );
 };

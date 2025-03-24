@@ -8,9 +8,11 @@ import { useRouter } from "expo-router";
 import ScreenLoader from "@/components/screenLoader";
 import ErrorScreen from "@/components/errorScreen";
 import Button from "@/components/button";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 const EditProjectsScreen = () => {
+  const { t } = useTranslation();
+
   const router = useRouter();
   const { projectId }: { projectId: string } = useLocalSearchParams();
 
@@ -47,7 +49,7 @@ const EditProjectsScreen = () => {
             <ErrorScreen
               button={
                 <Button onPress={() => refetch()}>
-                  {translate("errorScreen.REFRESH")}
+                  {t("errorScreen.REFRESH")}
                 </Button>
               }
             />
@@ -57,9 +59,7 @@ const EditProjectsScreen = () => {
               defaultValues={data}
               isLoading={isPending}
               onSubmit={onSubmit}
-              submitText={translate(
-                `project.projectForm.EDIT_SUBMIT_BUTTON_LABEL`,
-              )}
+              submitText={t(`project.projectForm.EDIT_SUBMIT_BUTTON_LABEL`)}
             />
           ),
         }[state]

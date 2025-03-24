@@ -1,12 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { theme } from "@/theme";
 
 const TaskListEmptyState = () => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.emptyText}>{translate("task.EMPTY_TASKS_LIST")}</Text>
+      <Text style={styles.emptyText}>{t("task.EMPTY_TASKS_LIST")}</Text>
     </View>
   );
 };

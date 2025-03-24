@@ -1,9 +1,11 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { translate } from "@/i18n";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { useTranslation } from "react-i18next";
 
 export default function TabLayout() {
+  const { t } = useTranslation();
+
   return (
     <Tabs>
       <Tabs.Screen name="index" options={{ href: null }} />
@@ -11,7 +13,7 @@ export default function TabLayout() {
         name="dashboard"
         options={{
           headerShown: false,
-          title: translate("routing.DASHBOARD"),
+          title: t("routing.DASHBOARD"),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="view-dashboard-outline"
@@ -25,7 +27,7 @@ export default function TabLayout() {
         name="projects"
         options={{
           headerShown: false,
-          title: translate("routing.PROJECTS"),
+          title: t("routing.PROJECTS"),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="folder-outline"
@@ -39,7 +41,7 @@ export default function TabLayout() {
         name="settings"
         options={{
           headerShown: false,
-          title: translate("routing.SETTINGS"),
+          title: t("routing.SETTINGS"),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="cogs" size={24} color={color} />
           ),

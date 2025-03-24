@@ -1,5 +1,5 @@
 import React from "react";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import SearchInput from "@/components/searchInput";
 
 type Props = {
@@ -8,9 +8,11 @@ type Props = {
 };
 
 const ProjectSearchInput = ({ search, setSearch }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <SearchInput
-      placeholder={translate("project.SEARCH_PLACEHOLDER")}
+      placeholder={t("project.SEARCH_PLACEHOLDER")}
       value={search}
       onChangeText={setSearch}
     />

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import type { TaskResponse, TaskStatus } from "../../../api/api";
 import { StyleSheet, Text, View } from "react-native";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import ActionsBottomSheet from "./actionsBottomSheet";
 import TaskCard from "./taskCard";
@@ -20,6 +20,8 @@ type Props = {
 };
 
 const TaskCardsList = ({ data, status }: Props) => {
+  const { t } = useTranslation();
+
   const { projectId }: { projectId: string } = useLocalSearchParams();
 
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -40,9 +42,7 @@ const TaskCardsList = ({ data, status }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.statusTitle}>
-          {translate(`taskStatuses.${status}`)}
-        </Text>
+        <Text style={styles.statusTitle}>{t(`taskStatuses.${status}`)}</Text>
         <MaterialCommunityIcons
           name="dots-horizontal"
           size={24}

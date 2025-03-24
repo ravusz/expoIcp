@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import { theme } from "@/theme";
 import { useFetchStatistics } from "../../api/queries/useFetchStatistics";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 const TotalStatistics = () => {
+  const { t } = useTranslation();
+
   const { data, isLoading, isError } = useFetchStatistics();
 
   const getState = () => {
@@ -33,20 +35,20 @@ const TotalStatistics = () => {
           error: (
             <>
               <View style={styles.container}>
-                <Text>{translate("statistics.DATA_ERROR")}</Text>
+                <Text>{t("statistics.DATA_ERROR")}</Text>
               </View>
               <View style={styles.container}>
-                <Text>{translate("statistics.DATA_ERROR")}</Text>
+                <Text>{t("statistics.DATA_ERROR")}</Text>
               </View>
             </>
           ),
           empty: (
             <>
               <View style={styles.container}>
-                <Text>{translate("statistics.NO_DATA")}</Text>
+                <Text>{t("statistics.NO_DATA")}</Text>
               </View>
               <View style={styles.container}>
-                <Text>{translate("statistics.NO_DATA")}</Text>
+                <Text>{t("statistics.NO_DATA")}</Text>
               </View>
             </>
           ),
@@ -54,12 +56,12 @@ const TotalStatistics = () => {
             <>
               <View style={styles.container}>
                 <Text style={styles.text}>
-                  {`${translate("statistics.PROJECTS_TOTAL_COUNT")} ${data?.count.projects}`}
+                  {`${t("statistics.PROJECTS_TOTAL_COUNT")} ${data?.count.projects}`}
                 </Text>
               </View>
               <View style={styles.container}>
                 <Text style={styles.text}>
-                  {`${translate("statistics.TASKS_TOTAL_COUNT")} ${data?.count.tasks}`}
+                  {`${t("statistics.TASKS_TOTAL_COUNT")} ${data?.count.tasks}`}
                 </Text>
               </View>
             </>

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import Button from "@/components/button";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useFetchTaskById } from "@/tasksApi/queries/useFetchTaskById";
@@ -21,6 +21,8 @@ type Props = {
 
 const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
   ({ projectId, taskId, status }: Props, ref) => {
+    const { t } = useTranslation();
+
     const { data, isLoading, isError, refetch } = useFetchTaskById(
       projectId,
       taskId,
@@ -50,7 +52,7 @@ const ActionsBottomSheet = forwardRef<BottomSheet, Props>(
                 <ErrorScreen
                   button={
                     <Button onPress={() => refetch()}>
-                      {translate("errorScreen.REFRESH")}
+                      {t("errorScreen.REFRESH")}
                     </Button>
                   }
                 />

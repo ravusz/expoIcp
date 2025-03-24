@@ -9,10 +9,12 @@ import ScreenContainer from "@/components/screenContainer";
 import ScreenLoader from "@/components/screenLoader";
 
 import Button from "@/components/button";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import TasksCarousel from "./components/TasksCarousel";
 
 const TasksScreen = () => {
+  const { t } = useTranslation();
+
   const { projectId }: { projectId: string } = useLocalSearchParams();
   const router = useRouter();
 
@@ -38,7 +40,7 @@ const TasksScreen = () => {
             <ErrorScreen
               button={
                 <Button onPress={() => refetch()}>
-                  {translate("errorScreen.REFRESH")}
+                  {t("errorScreen.REFRESH")}
                 </Button>
               }
             />
@@ -51,7 +53,7 @@ const TasksScreen = () => {
                     router.navigate(`projects/${projectId}/tasks/addTask`)
                   }
                 >
-                  {translate("task.addNewTask")}
+                  {t("task.addNewTask")}
                 </Button>
               }
               title="task.emptyList.TITLE"

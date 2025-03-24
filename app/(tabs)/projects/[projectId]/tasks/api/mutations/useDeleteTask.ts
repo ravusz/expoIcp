@@ -1,10 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Toast from "react-native-toast-message";
-import { translate } from "@/i18n";
+import { useTranslation } from "react-i18next";
 import { deleteTask } from "../api";
 import { taskKeys } from "../queryKeys";
 
 export const useDeleteTask = (projectId: string) => {
+  const { t } = useTranslation();
+
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -12,7 +14,7 @@ export const useDeleteTask = (projectId: string) => {
     onSuccess: async () => {
       Toast.show({
         type: "success",
-        text1: translate("task.deleteTaskSuccessMessage"),
+        text1: t("task.deleteTaskSuccessMessage"),
       });
 
       await queryClient.invalidateQueries({
@@ -22,7 +24,7 @@ export const useDeleteTask = (projectId: string) => {
     onError: () => {
       Toast.show({
         type: "error",
-        text1: translate("task.deleteTaskErrorMessage"),
+        text1: t("task.deleteTaskErrorMessage"),
       });
     },
   });
